@@ -1,0 +1,16 @@
+[
+  {
+    "id": 3,
+    "name": "Snuggie",
+    "price": 2900,
+    "image": "https://bit.ly/2LVHYAk",
+    "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
+  },
+  {
+    "id": 5,
+    "name": "Ostrich Pillow",
+    "price": 9900,
+    "image": "https://bit.ly/2VD80b8",
+    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+  }
+]
