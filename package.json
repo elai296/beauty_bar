@@ -1,7 +1,7 @@
 {
   "name": "wicked-sales",
   "version": "1.0.0",
-  "description": "A test repo for the wicked-sales LAMP & React app.",
+  "description": "A full stack LAMP & React shopping cart app.",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --mode=production",
