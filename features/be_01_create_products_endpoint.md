@@ -22,4 +22,4 @@
 #### postman endpoint example
 ![successful output](assets/be01_2.png)
 
-- notice the status code 500 on the middle right?
+- notice the status code 500 on the middle-right?
