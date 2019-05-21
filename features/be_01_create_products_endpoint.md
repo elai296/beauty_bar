@@ -17,4 +17,9 @@
 #### postman endpoint example
 ![successful output](assets/be01_1.png)
 
-1. cause an error by calling a non-existant function, doStuff.  See if you get an error output.
+1. cause an error by calling a non-existant function, doStuff.  See if you get an error output.  Make sure to do this AFTER the set_exeption_handler
+
+#### postman endpoint example
+![successful output](assets/be01_2.png)
+
+- notice the status code 500 on the middle right?
