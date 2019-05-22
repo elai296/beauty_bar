@@ -18,7 +18,7 @@
 1. in the startup function, send the following header: 
     * "Content-type:application/json"
     * this will let the receiving client know that you are sending json data
-1. in the top of your file, after you set your error handler, call your startup function
+1. in the top of your products.php file, after you set your error handler, call your startup function
 1. in postman, check the headers you are receiving and see if you got the right one
     * ![header tab in postman](assets/be04_3.png)
     * ![json/application header](assets/be04_4.png)
