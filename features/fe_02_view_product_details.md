@@ -15,7 +15,7 @@ The Figma for this feature can be found [here](https://www.figma.com/file/BKByCT
 - [ ] Define a `setView` method in `App` that takes two parameters; `name` and `params`. `setView` updates `App`'s `view` state to the new `name String` and `params Object`.
 - [ ] Pass `App`'s `setView` method into `ProductList` via props so that when a user clicks on a `ProductListItem`, `App`'s `view` state gets updated to `{ name: 'details', params: { id: product.id } }`
 - [ ] Modify `App`'s render method to conditionally render either the `ProductList` or the `ProductDetails` based on whether `App`'s current `view.name` state is `"catalog"` or `"details"`. If the `ProductDetails` component is being rendered, pass it `App`'s `view.params` state via props as well as `App`'s `setView` method.
-- [ ] Modify `ProductList`'s `componentDidMount` method to request product details based on the props it now receives from `App`.
+- [ ] Modify `ProductDetails`'s `componentDidMount` method to request product details based on the props it now receives from `App`.
 - [ ] Ensure that when the user clicks "Back to catalog" in `ProductDetails`, `App`'s `setView` callback gets called with `"catalog"` and an empty `Object` to switch the user back to the `ProductList` view.
 - [ ] Push all commits to `origin view-details-front-end`.
 - [ ] Open a Pull Request from `view-details-front-end` to `dev`.
