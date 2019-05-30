@@ -9,7 +9,7 @@ The Figma for this feature can be found [here](https://www.figma.com/file/BKByCT
 - [x] Create a figma that includes a `ProductDetails` component.
 - [ ] Check out a branch from `dev` named `view-details-front-end`.
 - [ ] Define a stateful `ProductDetails` component in `client/components/product-details.jsx` with an initial state that includes a `product` set to `null` and an initial render method that returns `null`.
-- [ ] Add a `componentDidMount` method to `ProductDetails` that retrieves the details of a specific product by `id` from the server with a `GET` request. _e.g._ `"/api/products?id=1"`
+- [ ] Add a `componentDidMount` method to `ProductDetails` that retrieves the details of a specific product by `id` from the server with a `GET` request. _e.g._ `"/api/products.php?id=1"`
 - [ ] Complete the implementation of `ProductDetails`'s render method to conditionally render a view of the product's details (as soon as the details are loaded from the server).
 - [ ] Add a property to `App`'s initial state named `view` that is an `Object` with two properties; `name` and `params`. `name` is a `String` set to `"catalog"` and `params` is an empty `Object`. _i.e._ `{ view: 'catalog', params: {} }`
 - [ ] Define a `setView` method in `App` that takes two parameters; `name` and `params`. `setView` updates `App`'s `view` state to the new `name String` and `params Object`.
