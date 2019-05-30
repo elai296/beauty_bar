@@ -29,9 +29,13 @@ For this project, you will be building a single-page React application and a dyn
    ```
    sudo service apache2 restart
    ```
-7. Test that the virtual host is working by sending an HTTP request to `http://wicked-sales.localhost`. You should receive `200 OK` response containing an HTML document with the title of "Wicked Sales".
+7. Start `webpack-dev-server` running the provided `"dev"` script in `package.json`.
    ```
-   http get http://wicked-sales.localhost
+   npm run dev
+   ```
+8. Test that Webpack Dev Server and Apache are working together by sending a GET request to `localhost:3000/api/products.php`. You should receive `200 OK` response containing a JSON `Array` of products.
+   ```
+   http get localhost:3000/api/products.php
    ```
 
 ## Features
@@ -46,5 +50,5 @@ As you work through each task of a given feature, make a commit. It's good to ge
 
 ## NPM Scripts
 
-- `dev` - Start Webpack Dev Server at port `localhost:3000`
+- `dev` - Start Webpack Dev Server at `localhost:3000`
 - `build` - Run Webpack to build the React client into `server/public`.
