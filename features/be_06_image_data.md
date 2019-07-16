@@ -34,6 +34,8 @@
     ![images subquery result](assets/be06_1.png)
     (there are many forms of subqueries, this is just 1)
 1. the product list should remain the same at this point as it was previously.
+1. your result should look something like this
+    ![images subquery result](assets/be06_4.png)
 
 ### task list 2 - modify product details
 
@@ -53,8 +55,7 @@
     example: 
     ![images subquery result](assets/be06_2.png)
 1. notice how the main information is repeated because there are many images per 1 entry in product
-1. your final output should look something like this in postman
-    ![images subquery result](assets/be06_4.png)
+
 
 ### task list 3 - modify query
 
@@ -72,8 +73,8 @@
     ```
 1. in more complex situations, this sort of thing would need to be handled in PHP to parse the data, but for this we can use [GROUP_CONCAT](https://www.w3resource.com/mysql/aggregate-functions-and-grouping/aggregate-functions-and-grouping-group_concat.php).
 1. your data will look something now like this:
-    ![images subquery result](assets/be06_3.png)
-1. notice that images is a comma separated list of image urls.  We need it to be an array
+    ![images subquery result](assets/be06_5.png)
+1. notice that images is a comma separated list of image urls.  We need it to be an array, otherwise your output will look like this: 
 1. in your while loop where you mysqli_fetch_assoc your data (for your product details):
 1. transform images into an array
     1. read about [php explode](https://www.php.net/manual/en/function.explode.php)
@@ -82,6 +83,6 @@
     $row['images'] = ?
     ```
 1. your final output should look like this in postman
-    ![images subquery result](assets/be06_5.png)
+    ![images subquery result](assets/be06_6.png)
 1. send a pull request with your screen shots correct once you have it correct
     
