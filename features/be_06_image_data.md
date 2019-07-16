@@ -54,6 +54,7 @@
     ![images subquery result](assets/be06_2.png)
 1. notice how the main information is repeated because there are many images per 1 entry in product
 1. your final output should look something like this in postman
+    ![images subquery result](assets/be06_4.png)
 
 ### task list 3 - modify query
 
@@ -81,4 +82,6 @@
     $row['images'] = ?
     ```
 1. your final output should look like this in postman
+    ![images subquery result](assets/be06_5.png)
+1. send a pull request with your screen shots correct once you have it correct
     
