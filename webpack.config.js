@@ -37,8 +37,10 @@ module.exports = {
     stats: 'minimal',
     proxy: {
       '/api': {
-        changeOrigin: true,
-        target: 'http://wicked-sales.localhost'
+        target: 'http://localhost',
+        headers: {
+          Host: 'wicked-sales.localhost'
+        }
       }
     }
   }
