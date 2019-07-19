@@ -1,6 +1,7 @@
 [
   {
     "id": 3,
+    "count": 1,
     "name": "Snuggie",
     "price": 2900,
     "image": "https://bit.ly/2LVHYAk",
@@ -8,6 +9,7 @@
   },
   {
     "id": 5,
+    "count": 2,
     "name": "Ostrich Pillow",
     "price": 9900,
     "image": "https://bit.ly/2VD80b8",
