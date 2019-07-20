@@ -4,6 +4,7 @@
 1. Use the accompanying “cart.sql” file add to your database schema, you should also update your dbdesigner.net schema with this new structure
 1. Update functions with getBodyData to get body data and convert from json to variables (you did this in a prototype to get data)
 1. In cart.php Create a new [constant](https://www.php.net/manual/en/function.define.php), INTERNAL, set to value true
+1. remove / comment out the existing code.
 1. Require functions.php
 1. [Start a session](https://www.php.net/manual/en/function.session-start.php)
 1. Set your error handler
