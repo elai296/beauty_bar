@@ -1,0 +1,31 @@
+.navbar.navbar-default{
+    background-color: black;
+    color: white;
+}
+
+.propsImage{
+     height: 100px;
+     /* width: 75px; */
+   
+
+    /* height: auto;
+    max-width: 100%;
+    position: relative;
+    width: auto; */
+
+    /* width: auto;
+    height: auto;
+    max-width: 100%; */
+/* 
+    object-fit: cover;
+   width: 100%; */
+
+   /* top:0; 
+  bottom:0; 
+  margin: auto;
+  width:100%; */
+ }
+
+ .card-body {
+     height: 240px
+ }
