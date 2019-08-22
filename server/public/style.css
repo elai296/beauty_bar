@@ -1,0 +1,13 @@
+.navbar.navbar-default{
+    background-color: black;
+    color: white;
+}
+
+.propsImage{
+     height: 100px;
+    
+ }
+
+ .card-body {
+     height: 240px
+ }
