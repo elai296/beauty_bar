@@ -9,26 +9,6 @@ export default class App extends React.Component {
 
     };
   }
-
-  // Header() {
-  //   return (
-  //     <div>Wicked Sales</div>
-  //   );
-  // }
-
-  // ProductListItem() {
-  //   return (
-  //     <div>
-  //       <h1>The Very Hungry Caterpillar</h1>
-  //       <p>The best book ever!</p>
-  //     </div>
-  //   );
-  // }
-
-  // ProductList() {
-  //   // this.state = [];
-
-  // }
   render() {
     return (
       <React.Fragment>
