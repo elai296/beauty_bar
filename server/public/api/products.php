@@ -10,9 +10,6 @@ if(!empty($_GET['id'])){
   $id=$_GET['id'];
   if(!is_numeric($id)){
     throw new Exception("id needs to be a number");
-    // if(count($output)===0){
-    //   throw new Exception("invalid ID: " . $id);
-    // }
   }
   $whereClause="WHERE `id` =" . $id;
 }else{
@@ -24,9 +21,9 @@ if($result= mysqli_query($conn, $query)){
   $ouput=[];
   while($row = mysqli_fetch_assoc($result)){
     $output[]=$row;
-    print($output);
+    // print($output);
   }
-  if(count($output)===0){
+  if(empty($output)){
     throw new Exception("invalid ID: " . $id);
   }
   print(json_encode($output));
@@ -39,7 +36,7 @@ if($result= mysqli_query($conn, $query)){
 //   readfile('dummy-product-details.json');
 // }
 
-$output=file_get_contents('dummy-products-list.json');
-print($output);
+// $output=file_get_contents('dummy-products-list.json');
+// // print($output);
 
 ?>
