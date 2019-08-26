@@ -5,9 +5,16 @@
 
 .propsImage{
      height: 100px;
+     width: 175px;
+     margin: auto;
     
  }
 
  .card-body {
      height: 240px
+ }
+
+ .image{
+     max-width: 100%;
+     top: 100px;
  }
