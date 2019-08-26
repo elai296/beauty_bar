@@ -1,8 +1,7 @@
 <?php 
-header('Content-Type: application/json');
+startup();
 require_once('functions.php');
 set_exception_handler('error_handler');
-startup();
 require_once('db_connection.php');
 
 
