@@ -10,7 +10,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    const productId = parseInt(this.props.productId.params.id);
+    const productId = this.props.productId.params.id;
     fetch('/api/products.php?id=' + productId)
       .then(res => res.json())
       .then(json => {
