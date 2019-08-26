@@ -21,22 +21,11 @@ if($result= mysqli_query($conn, $query)){
   $ouput=[];
   while($row = mysqli_fetch_assoc($result)){
     $output[]=$row;
-    // print($output);
   }
-  if(empty($output)){
+  if(isset($id)&&empty($output)){
     throw new Exception("invalid ID: " . $id);
   }
   print(json_encode($output));
 }
-
-// header('Content-Type: application/json');
-// if (empty($_GET['id'])) {
-//   readfile('dummy-products-list.json');
-// } else {
-//   readfile('dummy-product-details.json');
-// }
-
-// $output=file_get_contents('dummy-products-list.json');
-// // print($output);
 
 ?>
