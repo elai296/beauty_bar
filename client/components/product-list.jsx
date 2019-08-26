@@ -7,6 +7,7 @@ class ProductList extends React.Component {
     this.state = {
       products: []
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   getProducts() {
     fetch('/api/products.php')
@@ -14,11 +15,17 @@ class ProductList extends React.Component {
         return response.json();
       })
       .then(products =>
-        this.setState({ products }));
+        this.setState({ products })
+      );
   }
   componentDidMount() {
     this.getProducts();
   }
+
+  handleClick(productId) {
+    this.props.setView('detail', { id: productId });
+  }
+
   render() {
     return (
       <div className="container">
@@ -27,10 +34,12 @@ class ProductList extends React.Component {
             return (
               <div className="col-md-3" key = {product.id}>
                 <ProductListItem
+                  productId = {product.id}
                   name={product.name}
                   price={'$' + (product.price * 0.01).toFixed(2)}
                   image={product.image}
-                  shortdescription={product.shortDescription} />
+                  shortdescription={product.shortDescription}
+                  handleClick={this.handleClick}/>
               </div>
             );
           })}
