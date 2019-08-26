@@ -18,7 +18,7 @@ export default class App extends React.Component {
       view: name,
       params: { params }
     });
-    // console.log(name, params);
+
   }
 
   render() {
@@ -33,10 +33,6 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header/>
         {display}
-
-        {/* <ProductList
-          setView={this.setView}/> */}
-        {/* <ProductDetails /> */}
 
       </React.Fragment>
     );
