@@ -9,8 +9,7 @@ export default class App extends React.Component {
     this.state = {
       view: 'catalog',
       params: {},
-      cart: [],
-      total: 0
+      cart: []
     };
     this.setView = this.setView.bind(this);
   }
@@ -29,11 +28,7 @@ export default class App extends React.Component {
         response.json()
       )
       .then(cartProducts => {
-        var total = 0;
-        cartProducts.map(element => {
-          total += element.count;
-        });
-        this.setState({ total: total });
+        this.setState({ cart: cartProducts });
       });
   }
 
@@ -60,7 +55,7 @@ export default class App extends React.Component {
     }
     return (
       <React.Fragment>
-        <Header cartItemCount= {this.state.total} />
+        <Header cartItemCount= {this.state.cart.length} />
         {display}
 
       </React.Fragment>
