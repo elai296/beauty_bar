@@ -8,7 +8,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: 'catalog',
-      params: {}
+      params: {},
+      cart: []
     };
     this.setView = this.setView.bind(this);
   }
@@ -21,17 +22,40 @@ export default class App extends React.Component {
 
   }
 
-  render() {
+  getCartItem() {
+    fetch('/api/cart.php')
+      .then(response =>
+        response.json()
+      )
+      .then(cartProducts => {
+        this.setState({ cart: cartProducts });
+      });
+  }
+
+  addToCart(product) {
+    fetch('/api/cart.php', {
+      method: 'POST',
+      body: product
+    }).then(response => response.json());
+    this.setState({ cart: [...this.state.cart, product] });
+  }
+
+  componentDidMount() {
+    this.getCartItem();
+  }
+
+  render(props) {
     let display;
     if (this.state.view === 'catalog') {
       display = <ProductList setView={this.setView} />;
     } else {
       display = <ProductDetails setView={this.setView}
-        productId={this.state.params}/>;
+        productId={this.state.params}
+        AddToCart={this.addToCart}/>;
     }
     return (
       <React.Fragment>
-        <Header/>
+        <Header cartItemCount= {this.state.cart.length} />
         {display}
 
       </React.Fragment>

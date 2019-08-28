@@ -1,9 +1,9 @@
 <?php 
-startup();
+header('Content-Type: application/json');
 require_once('functions.php');
 set_exception_handler('error_handler');
+startup();
 require_once('db_connection.php');
-
 
 if(!empty($_GET['id'])){
   $id=$_GET['id'];
@@ -14,7 +14,6 @@ if(!empty($_GET['id'])){
 }else{
   $whereClause="";
 }
-
 $query= "SELECT * FROM `Products`$whereClause";
 if($result= mysqli_query($conn, $query)){
   $output = [];
@@ -28,5 +27,4 @@ if($result= mysqli_query($conn, $query)){
 } else{
   print('No result');
 }
-
 ?>

@@ -7,6 +7,7 @@ class ProductDetails extends React.Component {
       product: null
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -21,13 +22,19 @@ class ProductDetails extends React.Component {
   handleClick(productId) {
     this.props.setView('catalog', { id: productId });
   }
+  handleAddToCart(product) {
+    this.props.AddToCart(product);
+  }
 
   render() {
     if (this.state.product === null) {
       return null;
     } else {
       return (
-        <div className="container"onClick={this.handleClick}>Back To Catalog
+        <div className="container">
+          <div onClick={this.handleClick}>
+            Back To Catalog
+          </div>
           <div className="row">
             <div className="col-md-6">
               {<img className="image" src={this.state.product.image} />}
@@ -36,6 +43,7 @@ class ProductDetails extends React.Component {
               <div className="p-2 font-weight-bold">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
               <div className="p-2">{this.state.product.shortDescription}</div>
+              <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>Add to Cart</button>
             </div>
             <div className="col">
               <div className="mt-5">{this.state.product.longDescription}</div>
