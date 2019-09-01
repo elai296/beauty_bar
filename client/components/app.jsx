@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 import React from 'react';
 import Header from './header.jsx';
 import ProductList from './product-list.jsx';
 import ProductDetails from './ProductDetails.jsx';
-import CartSummaryItem from './cartSummaryItem.jsx';
+// import CartSummaryItem from './cartSummaryItem.jsx';
+import CartSummary from './cartSummary.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ export default class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   setView(name, params) {
@@ -34,21 +37,24 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
-    fetch('/api/cart.php', {
-      method: 'POST',
-      body: product
-    }).then(response => response.json());
+    // fetch('/api/cart.php', {
+    //   method: 'POST',
+    //   body: product
+    // }).then(response => response.json());
     this.setState({ cart: [...this.state.cart, product] });
+    console.log(this.state.cart);
   }
 
   componentDidMount() {
     this.getCartItem();
   }
 
-  render(props) {
+  render() {
     let display;
     if (this.state.view === 'catalog') {
       display = <ProductList setView={this.setView} />;
+    } else if (this.state.view === 'cart') {
+      display = <CartSummary cart={this.state.cart} />;
     } else {
       display = <ProductDetails setView={this.setView}
         productId={this.state.params}
@@ -56,9 +62,9 @@ export default class App extends React.Component {
     }
     return (
       <React.Fragment>
-        <Header cartItemCount= {this.state.cart.length} />
+        <Header cartItemCount= {this.state.cart.length} setView={this.setView} />
         {display}
-        <CartSummaryItem />
+        {/* <CartSummaryItem cart={this.state.cart} /> */}
 
       </React.Fragment>
     );
