@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+// import App from './components/app';
+import CartSummaryItem from './components/cartSummaryItem';
+// import CartSummaryItem from './cartSummaryItem.jsx';
 
 ReactDOM.render(
-  <App />,
+  <CartSummaryItem />,
   document.querySelector('#root')
 );

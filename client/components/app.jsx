@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header.jsx';
 import ProductList from './product-list.jsx';
 import ProductDetails from './ProductDetails.jsx';
+import CartSummaryItem from './cartSummaryItem.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -57,6 +58,7 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header cartItemCount= {this.state.cart.length} />
         {display}
+        <CartSummaryItem />
 
       </React.Fragment>
     );
