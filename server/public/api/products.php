@@ -47,6 +47,6 @@ if($result= mysqli_query($conn, $query)){
   print('No result');
 }
 
-//SELECT i. `id_product`, p. `id` FROM `Images` AS i JOIN `Products` AS p ON p.`id`=i. `id_product` GROUP BY `id_product`
+
 
 ?>
