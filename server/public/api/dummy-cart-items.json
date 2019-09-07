@@ -1,18 +1,18 @@
 [
   {
-    "id": 3,
-    "count": 1,
-    "name": "Snuggie",
-    "price": 2900,
-    "image": "https://bit.ly/2LVHYAk",
-    "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
+    "id": 2,
+    "images": ["https://www.sephora.com/productimages/sku/s2218790-av-07-zoom.jpg", "https://www.sephora.com/productimages/product/p433523-av-01-zoom.jpg", "https://www.sephora.com/productimages/sku/s2218790-main-zoom.jpg"],
+    "longDescription": "Each palette contains four harmonious eye colors: Prime, Enhance, Smoke, and Pop. Create a smooth base for your eye look using the Prime shade, build up definition with Enhance, add drama with the Smoke shade, and finish your dazzling with the Pop shade (topper shade to be applied with finger). ",
+    "name": "Charlotte Tilbury Luxury Eyeshadow Palette",
+    "price": "5300",
+    "shortDescription": "A four-step eyeshadow quad (Prime, Enhance, Smoke, Pop) with a super blend-able, buttery, and non-creasing formula for buildable looks from day to night."
   },
   {
-    "id": 5,
-    "count": 2,
-    "name": "Ostrich Pillow",
-    "price": 9900,
-    "image": "https://bit.ly/2VD80b8",
-    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+    "id": 1,
+    "images": ["https://www.sephora.com/productimages/sku/s2137289-av-08-zoom.jpg", "https://www.sephora.com/productimages/sku/s2137289-av-04-zoom.jpg", "https://www.sephora.com/productimages/sku/s2137289-main-zoom.jpg"],
+    "longDescription": "Reinventing nude so you can experience it like never before, The New Nude Palette by HUDA BEAUTY is versatile and wearable in equal measure. Delivering infinite possibilities, this unexpected palette encourages you to experiment, empower, and express yourself however you please.",
+    "name": "Huda, The New Nude Eyeshadow Palette",
+    "price": "6500",
+    "shortDescription": "A game-changing palette that reinvents nude with revolutionary textures and colors."
   }
 ]

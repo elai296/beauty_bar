@@ -37,7 +37,7 @@ class ProductDetails extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6">
-              {<img className="image" src={this.state.product.image} />}
+              {<img className="image" src={this.state.product.images[0]} />}
             </div>
             <div className="col-md-6">
               <div className="p-2 font-weight-bold">{this.state.product.name}</div>

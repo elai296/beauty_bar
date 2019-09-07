@@ -8,5 +8,8 @@
   function startup(){
       header("Content-type:application/json");
   }
+  function getBodyData(){
+    
+  }
 
 ?>
