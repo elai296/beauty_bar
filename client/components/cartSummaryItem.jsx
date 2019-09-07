@@ -2,15 +2,22 @@
 import React from 'react';
 
 function CartSummaryItem(props) {
-  console.log('item summary', props.cart);
   return (
-    <div className= ".no-gutters .col-md-*">
-      item details
-      <div className="propsImageCartSummaryItem">{props.image}</div>
-      <div className="propsNameCartSummaryItem">{props.name}</div>
-      <div className="propsPriceCartSummaryItem">{props.price}</div>
-      <div className="propsShortdescription">{props.shortdescription}</div>
+    <div className="card mb-3">
+      <div className= "row no-gutters">
+        <div className="col-md-4">
+          {<img src={props.item.images[0]} className="card-img propsImageCartSummaryItem" alt="props.item.images[0]"/>}
+        </div>
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title propsNameCartSummaryItem">{props.item.name}</h5>
+            <p className="card-text propsShortdescription">{props.item.shortDescription}</p>
+            <p className="card-text propsPriceCartSummaryItem">{'$' + (props.item.price * 0.01).toFixed(2)}</p>
+          </div>
 
+        </div>
+
+      </div>
     </div>
   );
 }

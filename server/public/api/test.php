@@ -18,8 +18,7 @@ $query = "SELECT P.*
 
 if($result= mysqli_query($conn, $query2)){
     $output = [];
-    while($row = mysqli_fetch_assoc($result)){
-      // $row['images']=
+    while($row = mysqli_fetch_assoc($result)){2
       $image[]=$row;
     }
     if(isset($id) && empty($image)){
@@ -33,7 +32,6 @@ if($result= mysqli_query($conn, $query2)){
 if($result= mysqli_query($conn, $query)){
     $output = [];
     while($row = mysqli_fetch_assoc($result)){
-      // $row['images']=
       $output[]=$row;
     }
     if(isset($id) && empty($output)){
