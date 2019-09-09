@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductDetailCarousel from './productDetailCarousel';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -33,17 +34,18 @@ class ProductDetails extends React.Component {
       return (
         <div className="container">
           <div onClick={this.handleClick}>
-            Back To Catalog
+            Back To Main Page
           </div>
           <div className="row">
             <div className="col-md-6">
-              {<img className="image" src={this.state.product.images[0]} />}
+              <ProductDetailCarousel images={this.state.product.images} />
             </div>
             <div className="col-md-6">
-              <div className="p-2 font-weight-bold">{this.state.product.name}</div>
+              <div className="p-2 font-weight-bold">{this.state.product.brand}</div>
+              <div className="p-2">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
               <div className="p-2">{this.state.product.shortDescription}</div>
-              <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>Add to Cart</button>
+              <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>Add to Basket</button>
             </div>
             <div className="col">
               <div className="mt-5">{this.state.product.longDescription}</div>

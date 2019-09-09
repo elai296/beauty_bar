@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
+import Carousel from './carousel';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -29,12 +30,14 @@ class ProductList extends React.Component {
   render() {
     return (
       <div className="container">
+        <Carousel products={this.state.products}/>
         <div className="row">
           {this.state.products.map(product => {
             return (
               <div className="col-md-3" key = {product.id}>
                 <ProductListItem
                   productId = {product.id}
+                  brand={product.brand}
                   name={product.name}
                   price={'$' + (product.price * 0.01).toFixed(2)}
                   image={product.image}

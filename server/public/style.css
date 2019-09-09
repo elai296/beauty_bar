@@ -17,3 +17,63 @@
     max-width: 100%;
     top: 100px;
 }
+
+#carouselParent{
+    /* height: 500px;
+    width: 500px; */
+    /* height: 10vh; Magic here */
+    /* width: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#carouselParent img{
+    margin: auto;
+    height: 50vh;
+    width: auto;
+}
+
+#carousel-thumb{
+    margin: auto;
+    height: 20vh;
+    width: auto;
+}
+
+
+/* .ProductDetailThumbnails{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width:100%;
+}
+.ProductDetailThumbnails div{
+    display: inline-block;
+    margin: 0 15px
+}
+.ProductDetailThumbnails img{
+    display: inline-block;
+    width: 100%;
+    height:100%;
+}
+.ProductDetailMainImg{
+    height: 80%;
+    width: 80%;
+    margin: auto;
+} */
+
+.firstPicProductDetailCarousel img{
+    width: 340px;
+    height: 340px;
+}
+
+.carouselPicturesDetails img{
+    width: 100px;
+    height: 100px;
+    display: inline-block; 
+    margin: 0 25px;
+}
+
+.carouselPicturesDetails div{
+    display: inline-block;
+    margin: 0 15px
+}

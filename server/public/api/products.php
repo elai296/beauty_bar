@@ -13,7 +13,7 @@ if(!empty($_GET['id'])){
   if(!is_numeric($id)){
     throw new Exception("id needs to be a number");
   }
-  $query = "SELECT P.id, P.name, P.price, P.shortDescription, P.longDescription, I.images
+  $query = "SELECT P.id, P. brand, P.name, P.price, P.shortDescription, P.longDescription, I.images
   FROM Products AS P
   JOIN (
     SELECT id_product, GROUP_CONCAT(url_image) AS images
@@ -24,9 +24,18 @@ if(!empty($_GET['id'])){
   WHERE P.id = $id";
   
 }else{
-  $query="SELECT P.id, name, P.price, P.shortDescription, I.url_image as `image` FROM Products as P
-  JOIN
-  (SELECT `url_image`, `id_product` FROM `Images` WHERE `id_image` IN (SELECT min(`id_image`) as min_image FROM `Images` GROUP BY `id_product`)) as I
+  $query="SELECT P.id,  P.brand, P.name, P.price, P.shortDescription, I.url_image as `image` 
+  FROM Products as P
+  JOIN (
+    SELECT `url_image`, `id_product` 
+      FROM `Images` 
+      WHERE `id_image` 
+        IN (
+          SELECT min(`id_image`) as min_image 
+          FROM `Images` 
+          GROUP BY `id_product`
+        )
+    ) as I
   ON id = id_product";
 }
 

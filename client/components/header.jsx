@@ -7,9 +7,12 @@ function handleClickHome(props) {
 }
 function Header(props) {
   return (
-    <div className="navbar navbar-default">
-      <div className="fas fa-random" onClick={e => handleClickHome(props)}>  Wicked Sales</div>
-      <div className="fas fa-shopping-cart " onClick={e => handleClick(props)}>{props.cartItemCount} items</div>
+    <div>
+      <div className="navbar navbar-default">
+        <div className="fas fa-random" onClick={e => handleClickHome(props)}>  Free 3-Day Shipping over $50</div>
+        <div className="fas fa-shopping-cart " onClick={e => handleClick(props)}>{props.cartItemCount} items</div>
+      </div>
+      <div><h1 className='text-center'>RADIANT BEAUTY</h1></div>
     </div>
   );
 }
