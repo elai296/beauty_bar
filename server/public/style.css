@@ -77,3 +77,23 @@
     display: inline-block;
     margin: 0 15px
 }
+
+.shoppingBasket{
+    height: 100px;
+    width: 100px;
+    color: black;
+}
+
+.homeIcon{
+    height: 20px;
+    width: 20px;
+    top: 10px;
+}
+
+/* .shop{
+    color: black;
+} */
+
+.card-body:hover:not(.propsPrice){
+    text-decoration: underline;
+}

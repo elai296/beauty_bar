@@ -1,5 +1,5 @@
 import React from 'react';
-function Carousel(props) {
+function Carousel() {
   return (
     <div>
       <div id="carouselParent" className="carousel slide" data-ride="carousel">

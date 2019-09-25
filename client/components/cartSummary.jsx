@@ -1,15 +1,5 @@
 import React from 'react';
 import CartSummaryItem from './cartSummaryItem';
-// import CheckoutForm from './checkoutForm';
-function cartSummaryCalculate(cart) {
-  var sum = 0;
-  cart.map(item => {
-    return (
-      sum += parseInt(item.price)
-    );
-  });
-  return '$' + (sum * 0.01).toFixed(2);
-}
 
 function handleClick(props) {
   props.setView('catalog', { });
@@ -38,7 +28,7 @@ function CartSummary(props) {
         })}
       </div>
       <div className="cartSummaryCalculation text-right">
-        Item Total({props.cart.length} items): {cartSummaryCalculate(props.cart)}
+        Item Total({props.cart.length} items): {props.CartSummaryCalculate(props.cart)}
       </div>
       <button className="checkOutbutton"onClick={() => handleCheckOut(props)}>
           Place Order

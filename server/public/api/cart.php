@@ -1,17 +1,18 @@
 <?php
 
 header('Content-Type: application/json');
-require('functions.php');
+require_once('functions.php');
 session_start();
 require('db_connection.php');
 set_error_handler('error_handler');
 
 $method = $_SERVER['REQUEST_METHOD'];
 $item = file_get_contents('php://input');
-define("INTERNAL", true);
-if(POST){
-    require('card_add.php');
-}else if(GET){
+// define("INTERNAL", true);
+$INTERNAL = true;
+if($method === 'POST'){
+    require('cart_add.php');
+}else if($method === 'GET'){
     require('cart_get.php');
 }
 

@@ -6,7 +6,7 @@ function CartSummaryItem(props) {
     <div className="card mb-3">
       <div className= "row no-gutters">
         <div className="col-md-4">
-          {<img src={props.item.images[0]} className="card-img propsImageCartSummaryItem" alt="props.item.images[0]"/>}
+          {<img src={props.item.image} className="card-img propsImageCartSummaryItem" alt="props.item.images[0]"/>}
         </div>
         <div className="col-md-8">
           <div className="card-body">

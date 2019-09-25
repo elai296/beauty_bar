@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
-import Carousel from './carousel';
+// import Carousel from './carousel';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -30,7 +30,6 @@ class ProductList extends React.Component {
   render() {
     return (
       <div className="container">
-        <Carousel products={this.state.products}/>
         <div className="row">
           {this.state.products.map(product => {
             return (
