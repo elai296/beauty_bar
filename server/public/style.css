@@ -97,3 +97,14 @@
 .card-body:hover:not(.propsPrice){
     text-decoration: underline;
 }
+#carouselParent img{
+    height: 100%;
+    width: 90%;
+}
+.firstPicProductDetailCarousel img{
+    margin: auto;
+}
+.carouselPicturesDetails{
+    margin-top: 5px;
+    
+}

@@ -16,6 +16,15 @@
 <body>
   <div id="root"></div> 
   <script src="main.js"></script>
-  <script>$('.carousel').carousel()</script>
+  <script>
+  $('.carousel').carousel()
+  $('.carousel-control-prev').click(function() {
+    $('#carouselParent').carousel('prev');
+  });
+
+  $('.carousel-control-next').click(function() {
+    $('#carouselParent').carousel('next');
+  });
+</script>
 </body>
 </html>

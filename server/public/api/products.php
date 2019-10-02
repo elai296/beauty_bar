@@ -26,7 +26,7 @@ if(!empty($_GET['id'])){
 }else{
   $query="SELECT P.id,  P.brand, P.name, P.price, P.shortDescription, I.url_image as `image` 
   FROM Products as P
-  JOIN (
+  left JOIN (
     SELECT `url_image`, `id_product` 
       FROM `Images` 
       WHERE `id_image` 
@@ -36,7 +36,9 @@ if(!empty($_GET['id'])){
           GROUP BY `id_product`
         )
     ) as I
-  ON id = id_product";
+  ON id = id_product
+  -- WHERE id = 13";
+  
 }
 
 

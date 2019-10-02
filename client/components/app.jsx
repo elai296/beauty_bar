@@ -26,7 +26,7 @@ export default class App extends React.Component {
     this.setState({
       view: name,
       params: { params }
-    });
+    }, () => console.log('param:', this.state));
 
   }
 
@@ -73,6 +73,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getCartItem();
+    console.log('param2:', this.state);
   }
 
   render() {

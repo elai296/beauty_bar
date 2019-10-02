@@ -1,5 +1,6 @@
 import React from 'react';
 function Carousel() {
+  // const frontPageArr = ['../../server/public/image/frontCover1.jpeg', '../../server/public/image/frontCover2.jpg', '../../server/public/image/frontCover4.jpg'];
   return (
     <div>
       <div id="carouselParent" className="carousel slide" data-ride="carousel">

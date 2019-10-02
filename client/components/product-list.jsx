@@ -1,6 +1,6 @@
+/* eslint-disable no-console */
 import React from 'react';
 import ProductListItem from './product-list-item';
-// import Carousel from './carousel';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class ProductList extends React.Component {
         return response.json();
       })
       .then(products =>
-        this.setState({ products })
+        this.setState({ products },
+          () => console.log(products))
       );
   }
   componentDidMount() {
