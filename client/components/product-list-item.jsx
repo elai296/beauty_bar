@@ -4,9 +4,9 @@ function ProductListItem(props) {
     <div className="card mt-4">
       {<img className="propsImage" src={props.image} onClick={() => props.handleClick(props.productId)} />}
       <div className="card-body">
-        <div className="propsName my-2 font-weight-bold" onClick={() => props.handleClick(props.productId)}>{props.brand}</div>
-        <div className="propsName my-2 font-weight-bold">{props.name}</div>
-        <div className="propsPrice">{props.price}</div>
+        <div className="propsName my-2 text-center" onClick={() => props.handleClick(props.productId)}>{props.brand}</div>
+        <div className="propsName2 my-2 text-center">{props.name}</div>
+        <div className="propsPrice text-center">{props.price}</div>
       </div>
     </div>
   );

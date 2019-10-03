@@ -12,9 +12,6 @@ function handleCheckOut(props) {
 function CartSummary(props) {
   return (
     <div className="container">
-      <div onClick={e => handleClick(props)}>
-            Back To Catalog
-      </div>
       <h4 className="cartTitle font-weight-bold">
       Shopping Cart
       </h4>
@@ -27,12 +24,15 @@ function CartSummary(props) {
           );
         })}
       </div>
-      <div className="cartSummaryCalculation text-right">
+      <div className="cartSummaryCalculation text-right text-dark">
         Item Total({props.cart.length} items): {props.CartSummaryCalculate(props.cart)}
       </div>
       <button className="checkOutbutton"onClick={() => handleCheckOut(props)}>
           Place Order
       </button>
+      <div onClick={e => handleClick(props)}>
+            Return to Shopping
+      </div>
     </div>
   );
 }

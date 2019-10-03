@@ -191,7 +191,7 @@ class CheckoutForm extends React.Component {
                 </div>
                 <span className="text-success">-$5</span>
               </li>
-              <li className="list-group-item d-flex justify-content-between">
+              <li className="list-group-item d-flex justify-content-between text-dark">
                 <span>Total (USD)</span>
                 <strong>{this.props.CartSummaryCalculate(this.props.cart)}</strong>
               </li>
@@ -352,7 +352,7 @@ class CheckoutForm extends React.Component {
               </div>
               <hr className="mb-4"/>
 
-              <button className="btn btn-primary btn-lg btn-block" type="submit" onClick={() => this.handleClick()}>Continue to checkout</button>
+              <button type="submit" onClick={() => this.handleClick()}>Checkout</button>
             </form>
           </div>
         </div>

@@ -1,16 +1,57 @@
-.navbar.navbar-default{
-    background-color: black;
-    color: white;
+body{
+    background-color: #42413d;
+    color: #fff;
 }
 
+.beautyBar{
+    color: #ffdb00;
+    font-family: "MrsEavesOT-Roman", serif;;
+}
+.navbar.navbar-default{
+    background-color: black;
+    background-image: url(./image/navBarStripes.gif);
+    background-repeat: repeat-x;
+    background-position-y: center;
+    color: #fff;
+    background-color: #42413d;
+    font-family: "AvenirNextLTPro-Regular", sans-serif;
+    padding: 0;
+    height: 130px;
+}
+
+.fa-shopping-basket{
+    color: #ffdb00;
+}
+.basketImage{
+    height: 30%;
+    width: 30%;
+}
 .propsImage{
-     height: 125px;
-     width: 175px;
-     margin: auto;
+     height: 90%;
+     width: 90%;
+     margin: 1vh auto;
+}
+
+.propsName2{
+    color: #a1a09f;
 }
 
 .card-body {
-    height: 240px
+    height: 240px;
+    
+    /* border-image: url(./image/dotBorder.svg);
+    border-image-width: 0 3px 0 0;
+    border-width: 0 3px 0 0;
+    border-style: solid; */
+}
+
+.card{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 3px 3px 3px;
+    border-width:  3px 3px 3px 3px;
+    border-style: solid;
+    background-color: #42413d;
+    font-family: "AvenirNextLTPro-Regular", sans-serif;
 }
 
 .image {
@@ -79,7 +120,6 @@
 }
 
 .shoppingBasket{
-    height: 100px;
     width: 100px;
     color: black;
 }
@@ -108,3 +148,13 @@
     margin-top: 5px;
     
 }
+
+button{
+    background-color: #ffdb00;
+    color: #42413d;
+    border-radius: 3px;
+}
+
+/* .basketBox{
+    background-color: #a1a09f;
+} */
