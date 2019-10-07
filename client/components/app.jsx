@@ -6,14 +6,15 @@ import ProductDetails from './ProductDetails.jsx';
 import CartSummary from './cartSummary.jsx';
 import CheckoutForm from './checkoutForm';
 import HomePage from './homepage';
+import Footer from './footer.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'home page',
-      // view: 'checkout',
-      params: {},
+      view: 'cart',
+      // view: 'detail',
+      // params: { params: { id: 2 } },
       cart: []
     };
     this.setView = this.setView.bind(this);
@@ -96,7 +97,7 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header cartItemCount= {this.state.cart.length} setView={this.setView} />
         {display}
-
+        <Footer setView={this.setView} />
       </React.Fragment>
     );
   }

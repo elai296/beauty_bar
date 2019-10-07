@@ -12,17 +12,17 @@ function handleClickProductList(props) {
 function Header(props) {
   return (
     <div>
-      <div className="navbar navbar-default">
-        <div className="freeShipping" onClick={e => handleClickHome(props)}>  Free 3-Day Shipping over $50</div>
-        <div className="home" onClick={e => handleClickHome(props)} >Home
+      <div className="freeShipping text-center mt-4" onClick={e => handleClickHome(props)}>FREE 3-DAY SHIPPING OVER $50</div>
+      <div className="navbar navbar-default d-flex justify-content-around">
+        <div className="beautyBarLogo"><h4 className='text-center beautyBar'>beautyBar</h4></div>
+        <div className="home" onClick={e => handleClickHome(props)} >HOME
         </div>
-        <div className="shop" onClick={e => handleClickProductList(props)}>Shop </div>
+        <div className="shop" onClick={e => handleClickProductList(props)}>SHOP </div>
         <div className="shoppingBasket">
 
           <i className="fas fa-shopping-basket" onClick={e => handleClick(props)}>{props.cartItemCount} items</i>
         </div>
       </div>
-      <div><h1 className='text-center beautyBar'>beautyBar</h1></div>
     </div>
   );
 }

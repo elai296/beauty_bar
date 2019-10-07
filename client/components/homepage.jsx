@@ -1,17 +1,44 @@
 import React from 'react';
 import Carousel2 from './carousel copy';
+import FeaturedProducts from './featuredProducts';
 
-function HomePage(props) {
-  // const myArr = ['https://www.sephora.com/productimages/sku/s1501311-av-01-zoom.jpg', 'https://www.sephora.com/productimages/sku/s2129922-av-01-zoom.jpg', 'https://www.sephora.com/productimages/product/p449116-av-10-zoom.jpg'];
-  const frontPageArr = ['../image/frontCover1.jpeg', '../image/frontCover2.jpg', '../image/frontCover4.jpg'];
-  return (
-    <div>
+class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: []
+    };
+
+  }
+  getProducts() {
+    fetch('/api/products.php')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(products =>
+        this.setState({ products })
+      );
+  }
+  componentDidMount() {
+    this.getProducts();
+  }
+
+  render() {
+    const frontPageArr = ['../image/frontCover1.jpeg', '../image/frontCover2.jpg', '../image/frontCover4.jpg'];
+    let featureProducts;
+    if (this.state.products.length) {
+      featureProducts = <FeaturedProducts FeaturedProducts = {this.state.products} setView={this.props.setView}/>;
+    }
+
+    return (
       <div className="container">
         {/* <Carousel /> */}
         <Carousel2 frontPageArr={frontPageArr}/>
+
+        {featureProducts}
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default HomePage;

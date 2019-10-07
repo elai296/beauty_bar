@@ -37,6 +37,7 @@ if(!empty($_GET['id'])){
         )
     ) as I
   ON id = id_product
+  ORDER BY id
   -- WHERE id = 13";
   
 }

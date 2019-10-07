@@ -60,6 +60,7 @@ if(!$result){
 $query="INSERT INTO `cartItems` (`count`, `productID`, `price`, `added`, `cartID`) VALUES (1, $id, $price, now(), $cartId) ON DUPLICATE KEY UPDATE count = count + 1";
 $result= mysqli_query($conn, $query);
 
+// error checking if you added anything
 if(mysqli_affected_rows($conn)!==1){
     $errorMsg = 'Insert error: ' . mysqli_error($conn);
     $query="ROLLBACK";

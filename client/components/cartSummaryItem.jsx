@@ -3,21 +3,13 @@ import React from 'react';
 
 function CartSummaryItem(props) {
   return (
-    <div className="card mb-3">
-      <div className= "row no-gutters">
-        <div className="col-md-4">
-          {<img src={props.item.image} className="card-img propsImageCartSummaryItem" alt="props.item.images[0]"/>}
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title propsNameCartSummaryItem">{props.item.name}</h5>
-            <p className="card-text propsShortdescription">{props.item.shortDescription}</p>
-            <p className="card-text propsPriceCartSummaryItem">{'$' + (props.item.price * 0.01).toFixed(2)}</p>
-          </div>
-
-        </div>
-
+    <div className= "row no-gutters">
+      {<img src={props.item.image} className="card-img propsImageCartSummaryItem col-2" alt="props.item.images[0]"/>}
+      <div className="card-title propsNameCartSummaryItem col-8 pl-5 pt-3">
+        <h5>{props.item.brand}</h5>
+        <h6>{props.item.name}</h6>
       </div>
+      <p className="card-text propsPriceCartSummaryItem col-2 text-center pt-3" >{'$' + (props.item.price * 0.01).toFixed(2)}</p>
     </div>
   );
 }

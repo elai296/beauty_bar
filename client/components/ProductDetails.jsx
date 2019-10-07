@@ -32,23 +32,23 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="container">
-          <div onClick={this.handleClick}>
-            Back To Main Page
-          </div>
-          <div className="row">
-            <div className="col-md-6">
+        <div className="detailContainer">
+          <div className="row justify-content-center mt-3">
+            <div className="col-md-4">
               <ProductDetailCarousel images={this.state.product.images} />
             </div>
             <div className="col-md-6">
-              <div className="p-2 font-weight-bold">{this.state.product.brand}</div>
-              <div className="p-2">{this.state.product.name}</div>
+              <div className="detailBrand p-2 font-weight-bold">{this.state.product.brand}</div>
+              <div className="detailName p-2">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
-              <div className="p-2">{this.state.product.shortDescription}</div>
-              <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>Add to Basket</button>
-            </div>
-            <div className="col">
-              <div className="mt-5">{this.state.product.longDescription}</div>
+              <div className="borderDetail">
+                <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>ADD TO BASKET</button>
+              </div>
+              <div className="detailDescription p-2">{this.state.product.shortDescription}</div>
+              <div className="detailDescription mt-4">{this.state.product.longDescription}</div>
+              <div className="pt-5"onClick={this.handleClick}>
+                {'< Return to Shopping'}
+              </div>
             </div>
           </div>
         </div>

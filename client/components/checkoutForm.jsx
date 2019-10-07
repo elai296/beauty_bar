@@ -173,7 +173,7 @@ class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col-md-4 order-md-2 mb-4">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-muted">My Basket</span>
+              <span className="text-muted">ORDER SUMMARY</span>
               <span className="badge badge-secondary badge-pill">{this.props.cart.length} items</span>
             </h4>
             <ul className="list-group mb-3">
@@ -185,11 +185,6 @@ class CheckoutForm extends React.Component {
                 );
               })}
               <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span className="text-success">-$5</span>
               </li>
               <li className="list-group-item d-flex justify-content-between text-dark">
                 <span>Total (USD)</span>
@@ -356,15 +351,6 @@ class CheckoutForm extends React.Component {
             </form>
           </div>
         </div>
-
-        <footer className="my-5 pt-5 text-muted text-center text-small">
-          <p className="mb-1">2019 beautyBar</p>
-          <ul className="list-inline">
-            <li className="list-inline-item"><a href="#">Privacy</a></li>
-            <li className="list-inline-item"><a href="#">Terms</a></li>
-            <li className="list-inline-item"><a href="#">Support</a></li>
-          </ul>
-        </footer>
       </div>
     );
   }
