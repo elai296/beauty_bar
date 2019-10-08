@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `cart`
 --
-
+DROP TABLE `cart`;
 CREATE TABLE `cart` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `created` datetime NOT NULL
@@ -52,7 +52,7 @@ INSERT INTO `cart` (`id`, `created`) VALUES
 --
 -- Table structure for table `cartItems`
 --
-
+DROP TABLE `cartItems`;
 CREATE TABLE `cartItems` (
   `id` int(11) NOT NULL,
   `productID` mediumint(8) UNSIGNED NOT NULL,
@@ -93,7 +93,7 @@ INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`
 --
 -- Table structure for table `Images`
 --
-
+DROP TABLE `Images`;
 CREATE TABLE `Images` (
   `id_image` int(10) UNSIGNED NOT NULL,
   `url_image` varchar(150) COLLATE utf8_croatian_ci NOT NULL,
@@ -171,7 +171,7 @@ INSERT INTO `Images` (`id_image`, `url_image`, `id_product`, `created`) VALUES
 --
 -- Table structure for table `Products`
 --
-
+DROP TABLE `Products`;
 CREATE TABLE `Products` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `brand` varchar(500) COLLATE utf8_croatian_ci NOT NULL,

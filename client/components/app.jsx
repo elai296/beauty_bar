@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'cart',
+      view: 'home page',
       // view: 'detail',
       // params: { params: { id: 2 } },
       cart: []
@@ -37,8 +37,8 @@ export default class App extends React.Component {
         response.json()
       )
       .then(cartProducts => {
-        this.setState({ cart: cartProducts });
-        console.log('cart item:', cartProducts);
+        this.setState({ cart: cartProducts }, () =>
+          console.log('cart item:', cartProducts));
       });
   }
 
@@ -73,8 +73,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getCartItem();
-    console.log('param2:', this.state);
+    // this.getCartItem();
   }
 
   render() {

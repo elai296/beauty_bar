@@ -14,9 +14,10 @@ if($method === 'POST'){
     require('cart_add.php');
 }else if($method === 'GET'){
     require('cart_get.php');
-}else if($method === 'DELETE'){
-    require('cart_remove.php');
 }
+// else if($method === 'DELETE'){
+//     require('cart_remove.php');
+// }
 
 // if ($method == 'GET') {
 //   readfile('dummy-cart-items.json');

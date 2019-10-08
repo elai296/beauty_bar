@@ -11,7 +11,7 @@ class ProductList extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   getProducts() {
-    fetch('/api/products.php')
+    fetch('./api/products.php')
       .then(function (response) {
         return response.json();
       })

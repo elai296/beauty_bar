@@ -20,7 +20,7 @@ class HomePage extends React.Component {
       );
   }
   componentDidMount() {
-    this.getProducts();
+    // this.getProducts();
   }
 
   render() {
