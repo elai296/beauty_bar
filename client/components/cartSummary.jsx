@@ -24,7 +24,8 @@ function CartSummary(props) {
         {props.cart.map(item => {
           return (
             <div className="cartSummaryItem mb-3 dotsBordersBottom pb-3" key={item.id}>
-              <CartSummaryItem item={item} />
+              <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart}/>
+
             </div>
           );
         })}

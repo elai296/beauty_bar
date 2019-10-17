@@ -11,29 +11,29 @@ class HomePage extends React.Component {
 
   }
   getProducts() {
-    fetch('/api/products.php')
+    fetch('./api/products.php')
       .then(function (response) {
         return response.json();
       })
       .then(products =>
-        this.setState({ products })
+        this.setState({ products: products })
       );
   }
   componentDidMount() {
-    // this.getProducts();
+    this.getProducts();
   }
 
   render() {
     const frontPageArr = ['../image/frontCover1.jpeg', '../image/frontCover2.jpg', '../image/frontCover4.jpg'];
     let featureProducts;
-    if (this.state.products.length) {
+    if (this.state.products.length > 0) {
       featureProducts = <FeaturedProducts FeaturedProducts = {this.state.products} setView={this.props.setView}/>;
     }
 
     return (
       <div className="container">
         {/* <Carousel /> */}
-        <Carousel2 frontPageArr={frontPageArr}/>
+        <Carousel2 frontPageArr={frontPageArr} setView={this.props.setView}/>
 
         {featureProducts}
       </div>

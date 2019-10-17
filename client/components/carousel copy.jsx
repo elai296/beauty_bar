@@ -17,7 +17,7 @@ function Carousel(props) {
           let myClass = i === 0 ? 'carousel-item active' : 'carousel-item';
           return (
             <div className={myClass} key={i}>
-              {<img className="imageBorder d-block" src={item} alt="First slide" />}
+              {<img className="imageBorder d-block" src={item} alt="slide" onClick={() => props.setView('catalog', {})}/>}
             </div>
           );
         })}

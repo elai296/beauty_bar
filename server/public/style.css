@@ -30,12 +30,26 @@ body{
     width: 30%;
 }
 .propsImage{
-     height: 90%;
-     width: 90%;
-     margin: 1vh auto;
-     border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 1vh auto;
+    background-size: cover;
 }
-
+.vignette-inset{
+    margin: 1vh auto;
+    display: block;
+    position: relative;
+}
+.vignette-inset:hover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    box-shadow: inset 0px 0px 16px black;
+}
+/* .vignette-inset:hover:after {
+    box-shadow: none;
+  } */
 .propsName2{
     color: #a1a09f;
 }
@@ -169,7 +183,10 @@ button{
     width: 60%;
     margin: auto;
 }
-
+.cartQty{
+    font-size: .675em;
+    height: 100%;
+}
 .detailName{
     color: #a1a09f;
 }
@@ -271,4 +288,24 @@ button{
     border-width:  3px 3px 3px 3px;
     border-style: solid;
     background-color: #42413d;
+}
+.removeIcon {
+	background: url(./image/sprite.svg) no-repeat -1px -2894px;
+	width: 16px;
+	height: 16px;
+}
+.footerBarImage {
+    background: url('image/sprite.svg') repeat -2px -162px;
+    /* background-position: center; */
+    /* width: 768px; */
+    margin-top: 20px;
+	width: 100%;
+    height: 88px;
+}
+.footerBarLine{
+    background-color: #53524e;
+    /* background-color: rgba(255,255,255,.5); */
+    height: 0.75em;
+    margin-top: -.75em;
+
 }

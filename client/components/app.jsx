@@ -21,6 +21,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.getCartItem = this.getCartItem.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
   setView(name, params) {
@@ -62,6 +63,18 @@ export default class App extends React.Component {
 
   }
 
+  deleteFromCart(product) {
+    console.log('delete', product);
+    fetch('/api/cart.php', {
+      method: 'DELETE',
+      body: JSON.stringify(product)
+    });
+    // .then(cartProducts => {
+    //   this.setState({ cart: cartProducts }, () =>
+    //     console.log('cart item:', cartProducts));
+    // });
+  }
+
   cartSummaryCalculate(cart) {
     var sum = 0;
     cart.map(item => {
@@ -73,7 +86,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.getCartItem();
+    this.getCartItem();
   }
 
   render() {
@@ -83,7 +96,7 @@ export default class App extends React.Component {
     } else if (this.state.view === 'catalog') {
       display = <ProductList setView={this.setView} />;
     } else if (this.state.view === 'cart') {
-      display = <CartSummary cart={this.state.cart} setView={this.setView} CartSummaryCalculate={this.cartSummaryCalculate}/>;
+      display = <CartSummary cart={this.state.cart} setView={this.setView} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart}/>;
     } else if (this.state.view === 'checkout') {
       display = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} CartSummaryCalculate={this.cartSummaryCalculate}/>;
     } else if (this.state.view === 'detail') {
@@ -96,7 +109,7 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header cartItemCount= {this.state.cart.length} setView={this.setView} />
         {display}
-        <Footer setView={this.setView} />
+        <Footer />
       </React.Fragment>
     );
   }

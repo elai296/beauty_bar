@@ -11,11 +11,11 @@ export default function FeaturedProducts(props) {
         {productList.map(item => {
           return (
             <div className="bestSeller featuredCard featuredBorder mt-4 d-inline-block col-sm-3" key={item.id}>
-              {<img className="propsFeaturedImage" src={item.image} onClick={() => props.handleClick(props.productId)} />}
+              {<img className="propsFeaturedImage" src={item.image} onClick={() => props.setView('detail', { id: item.id })} />}
               <div className="card-body">
-                <div className="propsName my-2 text-center" onClick={() => props.handleClick(item.productId)}>{item.brand}</div>
-                <div className="propsName2 my-2 text-center">{item.name}</div>
-                <div className="propsPrice text-center">{'$' + (item.price * 0.01).toFixed(2)}</div>
+                <div className="propsName my-2 text-center" onClick={() => props.setView('detail', { id: item.id })}>{item.brand}</div>
+                <div className="propsName2 my-2 text-center" onClick={() => props.setView('detail', { id: item.id })}>{item.name}</div>
+                <div className="propsPrice text-center" onClick={() => this.setView('detail', { id: item.id })}>{'$' + (item.price * 0.01).toFixed(2)}</div>
               </div>
             </div>
           );
