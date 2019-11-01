@@ -19,7 +19,6 @@ export class productDetailCarousel extends Component {
         <div className="ProductDetailThumbnails">
 
           {this.props.images.map((image, x) => {
-            // let myClass = x === 0 ? 'carousel-item active' : 'carousel-item';
             return (
               <div key={x}>
                 {<img className="" src={image} alt={x} onClick={() => this.handleClick(x)}/>}

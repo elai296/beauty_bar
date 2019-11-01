@@ -2,7 +2,7 @@ import React from 'react';
 import CartSummaryItem from './cartSummaryItem';
 
 function handleClick(props) {
-  props.setView('catalog', { });
+  props.setView('catalog', {});
 }
 
 function handleCheckOut(props) {
@@ -24,7 +24,7 @@ function CartSummary(props) {
         {props.cart.map(item => {
           return (
             <div className="cartSummaryItem mb-3 dotsBordersBottom pb-3" key={item.id}>
-              <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart}/>
+              <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart} updateCart={props.updateCart}/>
 
             </div>
           );

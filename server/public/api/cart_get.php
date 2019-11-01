@@ -1,6 +1,4 @@
 <?php
-// require('cart.php');
-// echo $INTERNAL;
 require_once('functions.php');
 
 $isTouch = isset($INTERNAL);
