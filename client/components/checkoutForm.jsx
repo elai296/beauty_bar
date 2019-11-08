@@ -1,6 +1,5 @@
 import React from 'react';
 import BasketItem from './basketItem';
-// import basketItem from './basketItem';
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -48,6 +47,15 @@ class CheckoutForm extends React.Component {
   handleClick() {
     this.props.placeOrder();
   }
+  cartItemCount(cart) {
+    var sum = 0;
+    cart.map(item => {
+      return (
+        sum += parseInt(item.count)
+      );
+    });
+    return sum;
+  }
 
   render(props) {
     return (
@@ -57,16 +65,16 @@ class CheckoutForm extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-md-4 order-md-2 mb-4">
+          <div className="col-md-4 order-md-2 mb-4 checkoutItems pt-4 dotsBorders">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">ORDER SUMMARY</span>
-              <span className="badge badge-secondary badge-pill">{this.props.cart.length} items</span>
+              <span className="badge badge-secondary badge-pill">{this.cartItemCount(this.props.cart)} items</span>
             </h4>
-            <ul className="list-group mb-3">
+            <ul className="list-group mb-4">
               {this.props.cart.map(item => {
                 return (
-                  <li className="list-group-item d-flex justify-content-between lh-condensed" key={item.id}>
-                    <BasketItem cart={item} />
+                  <li className="list-group-item d-flex justify-content-between lh-condensed dotsBordersTB" key={item.id}>
+                    <BasketItem cart={item} deleteFromCart={this.props.deleteFromCart}/>
                   </li>
                 );
               })}
@@ -77,15 +85,6 @@ class CheckoutForm extends React.Component {
                 <strong>{this.props.CartSummaryCalculate(this.props.cart)}</strong>
               </li>
             </ul>
-
-            <form className="card p-2">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Promo code" onChange={this.handleInputChange}/>
-                <div className="input-group-append">
-                  <button type="submit" className="btn btn-secondary">Redeem</button>
-                </div>
-              </div>
-            </form>
           </div>
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3">Billing address</h4>
@@ -108,22 +107,8 @@ class CheckoutForm extends React.Component {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="username">Username</label>
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">@</span>
-                  </div>
-                  <input type="text" className="form-control" id="username" placeholder="Username" required onChange={this.handleInputChange}/>
-
-                  <div className="invalid-feedback">
-              Your username is required.
-                  </div>
-                </div>
-              </div>
-
-              <div className="mb-3">
                 <label htmlFor="email">Email <span className="text-muted">(Optional)</span></label>
-                <input type="email" className="form-control" id="email" placeholder="you@example.com" onChange={this.handleInputChange}/>
+                <input type="email" className="form-control" id="email" placeholder="" onChange={this.handleInputChange}/>
                 <div className="invalid-feedback">
             Please enter a valid email address for shipping updates.
                 </div>
@@ -131,7 +116,7 @@ class CheckoutForm extends React.Component {
 
               <div className="mb-3">
                 <label htmlFor="address">Address</label>
-                <input type="text" className="form-control" id="address" placeholder="1234 Main St" required onChange={this.handleInputChange}/>
+                <input type="text" className="form-control" id="address" placeholder="" required onChange={this.handleInputChange}/>
                 <div className="invalid-feedback">
             Please enter your shipping address.
                 </div>
@@ -148,6 +133,7 @@ class CheckoutForm extends React.Component {
                   <select className="custom-select d-block w-100" id="country" required>
                     <option value="">Choose...</option>
                     <option>United States</option>
+                    <option>Canada</option>
                   </select>
                   <div className="invalid-feedback">
               Please select a valid country.
@@ -282,7 +268,7 @@ class CheckoutForm extends React.Component {
                 </div>
               </div>
               <hr className="mb-4"/>
-
+              <div className="m-3">*Reminder! This site is for demo purposes and this is not a real order.</div>
               <button type="submit" onClick={() => this.handleClick()}>Checkout</button>
             </form>
           </div>

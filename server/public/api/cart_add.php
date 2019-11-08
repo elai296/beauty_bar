@@ -11,6 +11,8 @@ if(!$isTouch){
 
 $id = $_GET['id'];
 $id = intVal($id);
+$quantity = $_GET['quantity'];
+$quantity = intVal($quantity);
 if($id<=0){
     throw new Exception('Id is not valid');
 }
@@ -49,7 +51,7 @@ if($cartId===false){
 if(!$result){
     throw new Exception('Error');
 }
-$query  = "INSERT INTO `cartItems` (`cartID`,`productID`,`count`,`price`,`added`) VALUES($cartId,$id,1,$price,now()) ON DUPLICATE KEY UPDATE `count` = `count` + 1";
+$query  = "INSERT INTO `cartItems` (`cartID`,`productID`,`count`,`price`,`added`) VALUES($cartId,$id,$quantity,$price,now()) ON DUPLICATE KEY UPDATE `count` = `count` + $quantity";
 $result= mysqli_query($conn, $query);
 
 if(mysqli_affected_rows($conn)===0){

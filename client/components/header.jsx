@@ -8,22 +8,30 @@ function handleClickHome(props) {
 }
 function handleClickProductList(props) {
   props.setView('catalog', {});
-
 }
 function Header(props) {
   return (
-    <div>
+    <div className=''>
       <div className="freeShipping text-center mt-4" onClick={e => handleClickHome(props)}>FREE 3-DAY SHIPPING OVER $50</div>
-      <div className="navbar navbar-default d-flex justify-content-around">
-        <div className="beautyBarLogo"><h4 className='text-center beautyBar'>beautyBar</h4></div>
-        <div className="home" onClick={e => handleClickHome(props)} >HOME
+      <nav className="navbar navbar-expand-lg navbar-dark stripedNavBar  pl-5">
+        <a className="beautyBarLogo my-auto navbar-brand" onClick={e => handleClickHome(props)}><h3 className='text-center beautyBar brand'>beautyBar</h3></a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ">
+            <li className="nav-item active my-auto pl-3 pr-3">
+              <a className="home nav-link text-white" href="#"onClick={e => handleClickHome(props)}>HOME<span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item  my-auto pl-3 pr-3">
+              <a className="shop nav-link text-white" href="#"onClick={e => handleClickProductList(props)}>SHOP</a>
+            </li>
+            <li className="nav-item  my-auto pl-3 pr-3">
+              <a className="fas fa-shopping-basket shoppingBasket" onClick={e => handleClick(props)}>{props.cartItemCount} items</a>
+            </li>
+          </ul>
         </div>
-        <div className="shop" onClick={e => handleClickProductList(props)}>SHOP </div>
-        <div className="shoppingBasket">
-
-          <i className="fas fa-shopping-basket" onClick={e => handleClick(props)}>{props.cartItemCount} items</i>
-        </div>
-      </div>
+      </nav>
     </div>
   );
 }

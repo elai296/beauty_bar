@@ -15,3 +15,5 @@ if ($method != 'POST') {
   http_response_code(201);
   print($order);
 }
+
+?>

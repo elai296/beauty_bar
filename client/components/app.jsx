@@ -13,7 +13,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: 'home page',
-      cart: []
+      cart: [],
+      cartItems: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -39,7 +40,9 @@ export default class App extends React.Component {
       )
       .then(cartProducts => {
         this.setState({ cart: cartProducts });
-      });
+        this.setState({ cartItems: this.sumCartItem(this.state.cart) });
+      })
+      .then(this.state.cart);
   }
 
   placeOrder(order) {
@@ -51,16 +54,17 @@ export default class App extends React.Component {
     this.setView('catalog', {});
   }
 
-  addToCart(product) {
-    fetch('/api/cart.php?id=' + product.id, {
+  addToCart(product, quantity) {
+    console.log(product);
+    fetch('/api/cart.php?id=' + product.id + '&quantity=' + quantity, {
       method: 'POST',
       body: JSON.stringify(product)
-    }).then(response => response.json());
-    this.setState({ cart: [...this.state.cart, product] });
-
+    }).then(response => response.json())
+      .then(this.getCartItem());
   }
 
   deleteFromCart(product) {
+    console.log(product);
     fetch('/api/cart.php?id=' + product, {
       method: 'DELETE',
       body: JSON.stringify(product)
@@ -76,21 +80,20 @@ export default class App extends React.Component {
     var sum = 0;
     cart.map(item => {
       return (
-        sum += parseInt(item.price)
+        sum += parseInt(item.price) * parseInt(item.count)
       );
     });
     return '$' + (sum * 0.01).toFixed(2);
   }
-  sumCartItem() {
-    const cart = this.state.cart;
-    let cartCount = 0;
-    if (cart.length > 0) {
+  sumCartItem(cart) {
+    let Items = 0;
+    if (cart !== undefined) {
       for (let item of cart) {
         const itemCount = parseInt(item.count);
-        cartCount += itemCount;
+        Items += itemCount;
       }
     }
-    return cartCount;
+    return Items;
   }
 
   componentDidMount() {
@@ -106,16 +109,17 @@ export default class App extends React.Component {
     } else if (this.state.view === 'cart') {
       display = <CartSummary cart={this.state.cart} setView={this.setView} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart} updateCart={this.updateCart}/>;
     } else if (this.state.view === 'checkout') {
-      display = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} CartSummaryCalculate={this.cartSummaryCalculate}/>;
+      display = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart}/>;
     } else if (this.state.view === 'detail') {
       display = <ProductDetails setView={this.setView}
         productId={this.state.params}
         AddToCart={this.addToCart}/>;
     }
+    const itemCount = this.state.cartItems;
 
     return (
       <React.Fragment>
-        <Header cartItemCount= {this.sumCartItem()} setView={this.setView} />
+        <Header cartItemCount= {itemCount} setView={this.setView} />
         {display}
         <Footer />
       </React.Fragment>

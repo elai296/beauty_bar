@@ -22,7 +22,7 @@ class ProductDetailCarousel extends Component {
           {this.props.images.map((picture, i) => {
             return (
               <div className="carouselDetail " key={i} >
-                {<img src={picture} onClick={() => this.handleImage(i)}/>}
+                {<img src={picture} onMouseOver={() => this.handleImage(i)}/>}
               </div>
             );
           })}

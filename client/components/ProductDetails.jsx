@@ -24,7 +24,8 @@ class ProductDetails extends React.Component {
     this.props.setView('catalog', { id: productId });
   }
   handleAddToCart(product) {
-    this.props.AddToCart(product);
+    const qty = document.getElementById('qty').value;
+    this.props.AddToCart(product, qty);
   }
 
   render() {
@@ -42,6 +43,19 @@ class ProductDetails extends React.Component {
               <div className="detailName p-2">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
               <div className="borderDetail">
+                <select name="quantity" className="col-1 cartQty align-items-center my-auto mr-3" id='qty'>
+                  {/* <option value={this.props.item.count} selected>{this.props.item.count}</option> */}
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
                 <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)}>ADD TO BASKET</button>
               </div>
               <div className="detailDescription p-2">{this.state.product.shortDescription}</div>
@@ -53,7 +67,6 @@ class ProductDetails extends React.Component {
           </div>
         </div>
       );
-
     }
   }
 }

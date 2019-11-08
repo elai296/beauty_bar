@@ -3,22 +3,29 @@ body{
     color: #fff;
     font-family: 'Noto Serif SC', serif;
 }
-
+#header{
+    list-style: none;
+}
+.list-group-item{
+    background-color: transparent;
+    border: 0;
+}
 .beautyBar{
     color: #ffdb00;
     font-family: 'Noto Serif SC', serif;
     font-family: 'Noto Serif SC', serif;
 }
-.navbar.navbar-default{
+.stripedNavBar
+{
     background-color: black;
     background-image: url(./image/navBarStripes.gif);
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     background-position-y: center;
     color: #fff;
     background-color: #42413d;
     font-family: "AvenirNextLTPro-Regular", sans-serif;
     padding: 0;
-    height: 130px;
+    /* height: 130px; */
     border-top: solid #a1a09f;;
 }
 
@@ -153,9 +160,6 @@ button{
     border-radius: 3px;
 }
 
-/* .basketBox{
-    background-color: #a1a09f;
-} */
 .imageBorder{
     border: solid 15px;
     border-color: #a1a09f;
@@ -184,8 +188,9 @@ button{
     margin: auto;
 }
 .cartQty{
-    font-size: .675em;
+    font-size: 1em;
     height: 100%;
+    padding-left: 20px;
 }
 .detailName{
     color: #a1a09f;
@@ -252,7 +257,6 @@ button{
     border-image-width: 3px 0;
     border-width:  3px 0;
     border-style: solid;
-    background-color: #42413d;
 }
 .dotsBordersTop{
     border-image: url(./image/dotBorder.svg) 9 repeat;
@@ -292,20 +296,21 @@ button{
 .removeIcon {
 	background: url(./image/sprite.svg) no-repeat -1px -2894px;
 	width: 16px;
-	height: 16px;
+    height: 16px;
 }
 .footerBarImage {
     background: url('image/sprite.svg') repeat -2px -162px;
-    /* background-position: center; */
-    /* width: 768px; */
     margin-top: 20px;
 	width: 100%;
     height: 88px;
 }
 .footerBarLine{
     background-color: #53524e;
-    /* background-color: rgba(255,255,255,.5); */
     height: 0.75em;
     margin-top: -.75em;
 
+}
+.checkoutItems{
+    background:white;
+    border-radius: 15px;
 }

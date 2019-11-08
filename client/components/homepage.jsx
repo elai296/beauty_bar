@@ -31,7 +31,7 @@ class HomePage extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="col-12 mt-4">
         <Carousel2 frontPageArr={frontPageArr} setView={this.props.setView}/>
 
         {featureProducts}
