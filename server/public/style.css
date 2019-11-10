@@ -1,0 +1,317 @@
+body{
+    background-color: #42413d;
+    color: #fff;
+    font-family: 'Noto Serif SC', serif;
+}
+#header{
+    list-style: none;
+}
+.list-group-item{
+    background-color: transparent;
+    border: 0;
+}
+.beautyBar{
+    color: #ffdb00;
+    font-family: 'Noto Serif SC', serif;
+    font-family: 'Noto Serif SC', serif;
+}
+.stripedNavBar
+{
+    background-color: black;
+    background-image: url(./image/navBarStripes.gif);
+    background-repeat: repeat;
+    background-position-y: center;
+    color: #fff;
+    background-color: #42413d;
+    font-family: "AvenirNextLTPro-Regular", sans-serif;
+    padding: 0;
+    /* height: 130px; */
+    border-top: solid #a1a09f;;
+}
+
+.fa-shopping-basket{
+    color: #ffdb00;
+}
+.basketImage{
+    height: 30%;
+    width: 30%;
+}
+.propsImage{
+    height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 1vh auto;
+    background-size: cover;
+}
+.vignette-inset{
+    margin: 1vh auto;
+    display: block;
+    position: relative;
+}
+.vignette-inset:hover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    box-shadow: inset 0px 0px 16px black;
+}
+/* .vignette-inset:hover:after {
+    box-shadow: none;
+  } */
+.propsName2{
+    color: #a1a09f;
+}
+
+.card-body {
+    height: 240px;
+}
+
+.card{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 3px 3px 3px;
+    border-width:  3px 3px 3px 3px;
+    border-style: solid;
+    background-color: #42413d;
+    font-family: "AvenirNextLTPro-Regular", sans-serif;
+}
+
+.image {
+    max-width: 100%;
+    top: 100px;
+}
+
+#carouselParent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#carouselParent img{
+    margin: auto;
+    height: 50vh;
+    width: auto;
+}
+
+#carousel-thumb{
+    margin: auto;
+    height: 20vh;
+    width: auto;
+}
+
+.detailContainer img{
+    border-radius: 3px;
+}
+
+.productCarousel{
+    height: 75%;
+}
+.firstPicProductDetailCarousel img{
+    width: 75%;
+    height: 75%;
+    display: block;
+    margin:auto;
+
+}
+.carouselPictures{
+    display: flex;
+    justify-content: center;
+    height: 25%;
+}
+.carouselDetail img{
+    width: 100%;
+    height: 100%;
+    display: inline-block; 
+    margin: 15px auto;
+}
+
+.carouselDetail{
+    display: inline-block;
+    margin: 0 7px;
+    height: 100%;
+}
+
+.shoppingBasket{
+    width: 100px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.homeIcon{
+    height: 20px;
+    width: 20px;
+    top: 10px;
+}
+
+.card-body:hover:not(.propsPrice){
+    text-decoration: underline;
+}
+#carouselParent img{
+    height: 100%;
+    width: 90%;
+}
+.firstPicProductDetailCarousel img{
+    margin: auto;
+}
+.carouselPicturesDetails{
+    margin-top: 5px;
+    
+}
+
+button{
+    background-color: #ffdb00;
+    color: #42413d;
+    border-radius: 3px;
+}
+
+.imageBorder{
+    border: solid 15px;
+    border-color: #a1a09f;
+}
+
+.borderDetail{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 0 3px 0;
+    border-width:  3px 3px 3px 3px;
+    border-style: solid;
+    padding: 30px;
+}
+
+.detailContainer{
+    font-family: 'Noto Serif SC', serif;
+}
+
+.containerProductList{
+    width: 70%;
+    margin: auto;
+    font-family: 'Noto Serif SC', serif;
+}
+
+.containerCartSummary{
+    width: 60%;
+    margin: auto;
+}
+.cartQty{
+    font-size: 1em;
+    height: 100%;
+    padding-left: 20px;
+}
+.detailName{
+    color: #a1a09f;
+}
+
+.detailBrand{
+    font-size: 1.5625em;
+    letter-spacing: 0.204em;
+    margin: 0 0 0.04em;
+}
+.detailDescription{
+    color: #a1a09f;
+}
+
+.cartSummaryItem{
+    font-family: 'Noto Serif SC', serif;
+}
+
+.propsFeaturedImage{
+    height: 150px;
+    display: block;
+    margin: auto;
+
+}
+.propsFeaturedImage img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin: 1vh auto;
+
+}
+
+.featuredCard{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 3px 3px 3px;
+    border-width:  3px 3px 3px 3px;
+    border-style: solid;
+    background-color: #42413d;
+}
+
+.featuredBorder{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 3px 3px 0;
+    border-width:  0 3px 3px 3px;
+    border-style: solid;
+    padding: 30px;
+}
+
+.featuredLogoBorder{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 0 3px 0;
+    border-width:  0 3px 3px 3px;
+    border-style: solid;
+    padding: 30px;
+
+}
+
+.footerLogo{
+    color: #a1a09f;
+}
+
+.dotsBordersTB{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 0;
+    border-width:  3px 0;
+    border-style: solid;
+}
+.dotsBordersTop{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 0 0 0;
+    border-width:  3px 0 0 0;
+    border-style: solid;
+    background-color: #42413d;
+}
+.dotsBordersRight{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 0 3px 0 0;
+    border-width:  0 3px 0 0;
+    border-style: solid;
+    background-color: #42413d;
+}
+.dotsBordersBottom{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 0 0 3px 0;
+    border-width:  0 0 3px 0;
+    border-style: solid;
+    background-color: #42413d;
+}
+.dotsBordersLeft{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 0 0 0 3px;
+    border-width: 0 0 0 3px;
+    border-style: solid;
+    background-color: #42413d;
+}
+.dotsBorders{
+    border-image: url(./image/dotBorder.svg) 9 repeat;
+    border-image-width: 3px 3px 3px 3px;
+    border-width:  3px 3px 3px 3px;
+    border-style: solid;
+    background-color: #42413d;
+}
+.removeIcon {
+	background: url(./image/sprite.svg) no-repeat -1px -2894px;
+	width: 16px;
+    height: 16px;
+}
+.footerBarImage {
+    background: url('image/sprite.svg') repeat -2px -162px;
+    margin-top: 20px;
+	width: 100%;
+    height: 88px;
+}
+.footerBarLine{
+    background-color: #53524e;
+    height: 0.75em;
+    margin-top: -.75em;
+
+}
+.checkoutItems{
+    background:white;
+    border-radius: 15px;
+}
+
