@@ -55,7 +55,6 @@ export default class App extends React.Component {
   }
 
   addToCart(product, quantity) {
-    console.log(product);
     fetch('/api/cart.php?id=' + product.id + '&quantity=' + quantity, {
       method: 'POST',
       body: JSON.stringify(product)
@@ -64,7 +63,6 @@ export default class App extends React.Component {
   }
 
   deleteFromCart(product) {
-    console.log(product);
     fetch('/api/cart.php?id=' + product, {
       method: 'DELETE',
       body: JSON.stringify(product)

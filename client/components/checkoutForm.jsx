@@ -1,5 +1,6 @@
 import React from 'react';
 import BasketItem from './basketItem';
+import ThankYouForShoppingModal from './thankYouModal';
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class CheckoutForm extends React.Component {
   render(props) {
     return (
       <div className="container">
+        <ThankYouForShoppingModal />
         <div className="py-5 text-center">
           <h2>Checkout</h2>
         </div>
@@ -81,7 +83,7 @@ class CheckoutForm extends React.Component {
               <li className="list-group-item d-flex justify-content-between bg-light">
               </li>
               <li className="list-group-item d-flex justify-content-between text-dark">
-                <span>Total (USD)</span>
+                <span>Estimated Total (USD)</span>
                 <strong>{this.props.CartSummaryCalculate(this.props.cart)}</strong>
               </li>
             </ul>
@@ -269,7 +271,8 @@ class CheckoutForm extends React.Component {
               </div>
               <hr className="mb-4"/>
               <div className="m-3">*Reminder! This site is for demo purposes and this is not a real order.</div>
-              <button type="submit" onClick={() => this.handleClick()}>Checkout</button>
+              {/* <button type="submit" onClick={() => this.handleClick()} data-toggle="modal" data-target="#thankyouModal">Checkout</button> */}
+              <button type='button' data-toggle="modal" data-target="#thankyouModal">Checkout</button>
             </form>
           </div>
         </div>

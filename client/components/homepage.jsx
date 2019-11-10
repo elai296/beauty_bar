@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel2 from './carousel copy';
 import FeaturedProducts from './featuredProducts';
+import DemoModal from './demoModal';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class HomePage extends React.Component {
         this.setState({ products: products })
       );
   }
+
   componentDidMount() {
     this.getProducts();
   }
@@ -32,11 +34,12 @@ class HomePage extends React.Component {
 
     return (
       <div className="col-12 mt-4">
+        <DemoModal />
         <Carousel2 frontPageArr={frontPageArr} setView={this.props.setView}/>
-
         {featureProducts}
       </div>
     );
+
   }
 }
 
