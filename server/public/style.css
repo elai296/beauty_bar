@@ -25,7 +25,6 @@ body{
     background-color: #42413d;
     font-family: "AvenirNextLTPro-Regular", sans-serif;
     padding: 0;
-    /* height: 130px; */
     border-top: solid #a1a09f;;
 }
 
@@ -54,9 +53,7 @@ body{
     top: 0; left: 0; bottom: 0; right: 0;
     box-shadow: inset 0px 0px 16px black;
 }
-/* .vignette-inset:hover:after {
-    box-shadow: none;
-  } */
+
 .propsName2{
     color: #a1a09f;
 }
@@ -314,4 +311,4 @@ button{
     background:white;
     border-radius: 15px;
 }
-
+  

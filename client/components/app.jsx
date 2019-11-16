@@ -7,11 +7,13 @@ import CartSummary from './cartSummary.jsx';
 import CheckoutForm from './checkoutForm';
 import HomePage from './homepage';
 import Footer from './footer.jsx';
+import ThankYouConfirmationPage from './thankYouConfirmationPage';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // view: 'checkout',
       view: 'home page',
       cart: [],
       cartItems: 0
@@ -50,8 +52,6 @@ export default class App extends React.Component {
       method: 'POST',
       body: order
     }).then(response => response.json());
-    this.setState({ cart: [] });
-    this.setView('catalog', {});
   }
 
   addToCart(product, quantity) {
@@ -94,6 +94,16 @@ export default class App extends React.Component {
     return Items;
   }
 
+  cartItemCount(cart) {
+    var sum = 0;
+    cart.map(item => {
+      return (
+        sum += parseInt(item.count)
+      );
+    });
+    return sum;
+  }
+
   componentDidMount() {
     this.getCartItem();
   }
@@ -107,7 +117,9 @@ export default class App extends React.Component {
     } else if (this.state.view === 'cart') {
       display = <CartSummary cart={this.state.cart} setView={this.setView} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart} updateCart={this.updateCart}/>;
     } else if (this.state.view === 'checkout') {
-      display = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart}/>;
+      display = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} cartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart}/>;
+    } else if (this.state.view === 'thankyouconfirmationpage') {
+      display = <ThankYouConfirmationPage cart={this.state.cart} setView={this.setView} cartItemCount={this.cartItemCount} cartSummaryCalculate={this.cartSummaryCalculate} placeOrder={this.placeOrder} />;
     } else if (this.state.view === 'detail') {
       display = <ProductDetails setView={this.setView}
         productId={this.state.params}

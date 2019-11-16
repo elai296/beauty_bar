@@ -24,7 +24,7 @@ export default function CheckoutModal(props) {
               <div className="card-title propsNameCartSummaryItem col-6 pl-5 my-auto text-center">
                 <h5>{props.product.brand}</h5>
                 <h6>{props.product.name}</h6>
-                <strong>We have added to your basket.</strong>
+                <strong>We have added {props.itemQty} items to your basket.</strong>
               </div>
               <div className="modal-footer borderDetail">
                 <button type="button" className="btn btn-secondary text-center" data-dismiss="modal" onClick={e => checkoutButton(props)}>Checkout</button>
