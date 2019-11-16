@@ -41,7 +41,7 @@ function returnCart(props) {
             <div className="col-1 text-center">QUANTITY</div>
 
           </div>
-          {props.cart.map(item => {
+          {!props.cart ? null : props.cart.map(item => {
             return (
               <div className="cartSummaryItem mb-3 dotsBordersBottom pb-3" key={item.id}>
                 <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart} updateCart={props.updateCart}/>

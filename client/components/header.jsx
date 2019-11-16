@@ -27,7 +27,7 @@ function Header(props) {
               <a className="shop nav-link text-white" href="#"onClick={e => handleClickProductList(props)}>SHOP</a>
             </li>
             <li className="nav-item  my-auto pl-3 pr-3">
-              <a className="fas fa-shopping-basket shoppingBasket" onClick={e => handleClick(props)}>{props.cartItemCount} items</a>
+              <a className="fas fa-shopping-basket shoppingBasket" onClick={e => handleClick(props)}>   {props.cartItemCount} items</a>
             </li>
           </ul>
         </div>

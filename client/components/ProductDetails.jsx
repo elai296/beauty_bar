@@ -30,12 +30,13 @@ class ProductDetails extends React.Component {
   }
 
   render() {
+    let qty = document.getElementById('qty') == null ? 0 : document.getElementById('qty').value;
     if (this.state.product === null) {
       return null;
     } else {
       return (
         <div className="detailContainer">
-          <CheckoutModal product={this.state.product} setView={this.props.setView} />
+          <CheckoutModal product={this.state.product} setView={this.props.setView} itemQty={qty}/>
           <div className="row justify-content-center mt-3">
             <div className="col-md-4">
               <ProductDetailCarousel images={this.state.product.images} />
@@ -52,8 +53,8 @@ class ProductDetails extends React.Component {
                   <option value="4">4</option>
                   <option value="5">5</option>
                   <option value="6">6</option>
+                  <option value="7">7</option>
                   <option value="8">8</option>
-                  <option value="9">9</option>
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select>
