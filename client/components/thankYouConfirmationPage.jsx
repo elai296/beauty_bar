@@ -63,14 +63,14 @@ export default function ThankYouConfirmationPage(props) {
                 </li>
               );
             })}
-            <li className="list-group-item d-flex justify-content-between bg-light"></li>
+            <li className="list-group-item d-flex justify-content-between blueColor"></li>
             <li className="list-group-item d-flex justify-content-between text-dark">
               <span>Estimated Total (USD):</span>
               <strong>
                 {props.cartSummaryCalculate(props.cart)}
               </strong>
             </li>
-            <button type="button" className="btn btn-warning text-center" data-dismiss="modal" onClick={e => handleClick(props)}>Continue Shopping</button>
+            <button type="button" className="button text-center" data-dismiss="modal" onClick={e => handleClick(props)}>Continue Shopping</button>
           </ul>
         </div>
       </div>

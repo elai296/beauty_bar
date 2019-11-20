@@ -65,7 +65,7 @@ function returnCart(props) {
 function CartSummary(props) {
   return (
     <div className="containerCartSummary">
-      <h4 className="cartTitle font-weight-bold text-center">MY BASKET</h4>
+      <h4 className="cartTitle font-weight-bold text-center underlineRed m-4">MY BASKET</h4>
       {returnCart(props)}
     </div>
   );
