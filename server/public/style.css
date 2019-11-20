@@ -315,12 +315,11 @@ button {
   display: block;
 }
 
-
+@media (min-width: 1000px){
 .headerHover:hover {
-  /* text-decoration: underline; */
   border-bottom: 3px solid #bc2226;
   text-decoration-color: #bc2226;
-  color: #bc2226;
+  }
 }
 
 .underlineRed {
@@ -342,3 +341,8 @@ button {
   z-index: 3;
   padding: 30px;
 }
+
+.navbar-light .navbar-toggler{
+  border: none;
+}
+
