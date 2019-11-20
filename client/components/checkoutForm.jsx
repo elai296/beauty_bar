@@ -70,7 +70,7 @@ class CheckoutForm extends React.Component {
     return (
       <div className="container">
         <div className="py-5 text-center">
-          <h2>Checkout</h2>
+          <h2 className="underlineRed">Checkout</h2>
         </div>
 
         <div className="row">
@@ -95,7 +95,7 @@ class CheckoutForm extends React.Component {
                   </li>
                 );
               })}
-              <li className="list-group-item d-flex justify-content-between bg-light"></li>
+              <li className="list-group-item d-flex justify-content-between blueColor"></li>
               <li className="list-group-item d-flex justify-content-between text-dark">
                 <span>Estimated Total (USD)</span>
                 <strong>

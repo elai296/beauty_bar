@@ -28,7 +28,7 @@ export default function CheckoutModal(props) {
               </div>
               <div className="modal-footer borderDetail">
                 <button type="button" className="btn btn-secondary text-center" data-dismiss="modal" onClick={e => checkoutButton(props)}>Checkout</button>
-                <button type="button" className="btn btn-warning text-center" data-dismiss="modal" onClick={e => continueShoppingButton(props)}>Continue Shopping</button>
+                <button type="button" className="button text-center" data-dismiss="modal" onClick={e => continueShoppingButton(props)}>Continue Shopping</button>
               </div>
             </div>
           </div>
