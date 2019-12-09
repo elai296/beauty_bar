@@ -13,7 +13,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // view: 'checkout',
       view: 'home page',
       cart: [],
       cartItems: 0
@@ -43,8 +42,7 @@ export default class App extends React.Component {
       .then(cartProducts => {
         this.setState({ cart: cartProducts });
         this.setState({ cartItems: this.sumCartItem(this.state.cart) });
-      })
-      .then(this.state.cart);
+      });
   }
 
   placeOrder(order) {
@@ -58,7 +56,8 @@ export default class App extends React.Component {
     fetch('/api/cart.php?id=' + product.id + '&quantity=' + quantity, {
       method: 'POST',
       body: JSON.stringify(product)
-    }).then(response => response.json())
+    })
+      .then(response => response.json())
       .then(this.getCartItem());
   }
 
@@ -66,12 +65,14 @@ export default class App extends React.Component {
     fetch('/api/cart.php?id=' + product, {
       method: 'DELETE',
       body: JSON.stringify(product)
-    }).then(this.getCartItem());
+    })
+      .then(this.getCartItem());
   }
   updateCart(item, count) {
     fetch('/api/cart.php?id=' + item + '&qty=' + count, {
       method: 'PUT'
-    }).then(this.getCartItem());
+    })
+      .then(this.getCartItem());
   }
 
   cartSummaryCalculate(cart) {
@@ -111,9 +112,9 @@ export default class App extends React.Component {
   render() {
     let display;
     if (this.state.view === 'home page') {
-      display = <HomePage setView={this.setView} />;
+      display = <HomePage setView={this.setView} AddToCart={this.addToCart}/>;
     } else if (this.state.view === 'catalog') {
-      display = <ProductList setView={this.setView} />;
+      display = <ProductList setView={this.setView} AddToCart={this.addToCart}/>;
     } else if (this.state.view === 'cart') {
       display = <CartSummary cart={this.state.cart} setView={this.setView} CartSummaryCalculate={this.cartSummaryCalculate} deleteFromCart={this.deleteFromCart} updateCart={this.updateCart}/>;
     } else if (this.state.view === 'checkout') {
@@ -121,9 +122,7 @@ export default class App extends React.Component {
     } else if (this.state.view === 'thankyouconfirmationpage') {
       display = <ThankYouConfirmationPage cart={this.state.cart} setView={this.setView} cartItemCount={this.cartItemCount} cartSummaryCalculate={this.cartSummaryCalculate} placeOrder={this.placeOrder} />;
     } else if (this.state.view === 'detail') {
-      display = <ProductDetails setView={this.setView}
-        productId={this.state.params}
-        AddToCart={this.addToCart}/>;
+      display = <ProductDetails setView={this.setView} productId={this.state.params} AddToCart={this.addToCart}/>;
     }
     const itemCount = this.state.cartItems;
 

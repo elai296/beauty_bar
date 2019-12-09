@@ -1,14 +1,19 @@
 /* eslint-disable no-console */
 import React from 'react';
 import ProductListItem from './product-list-item';
+import QuickLookModal from './quickLookModal';
 
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      quickLookModal: { show: false, product: {} }
+
     };
     this.handleClick = this.handleClick.bind(this);
+    this.showQuickLook = this.showQuickLook.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   getProducts() {
     fetch('/api/products.php')
@@ -16,7 +21,7 @@ class ProductList extends React.Component {
         return response.json();
       })
       .then(products =>
-        this.setState({ products: products }, () => console.log(products))
+        this.setState({ products: products })
       );
   }
   componentDidMount() {
@@ -26,12 +31,20 @@ class ProductList extends React.Component {
   handleClick(productId) {
     this.props.setView('detail', { id: productId });
   }
-
+  handleAddToCart(product) {
+    const qty = document.getElementById('qty').value;
+    this.props.AddToCart(product, qty);
+  }
+  showQuickLook(product) {
+    this.setState({ quickLookModal: { show: true, product: product } }, () => console.log(this.state));
+  }
   render() {
+
     return (
       <div className="containerProductList text-center allProductsLogo">
         <h4 className='mt-5 py-2 text-center underlineRed'>ALL BEAUTY PRODUCTS</h4>
         <div className="row d-flex flex-wrap">
+          <QuickLookModal product={this.state.quickLookModal.product} handleAddToCart={this.handleAddToCart}/>
           {this.state.products.map(product => {
             return (
               <div
@@ -46,7 +59,10 @@ class ProductList extends React.Component {
                   image={product.image}
                   shortdescription={product.shortDescription}
                   handleClick={this.handleClick}
+                  product={product}
+                  showQuickLook = {this.showQuickLook}
                 />
+
               </div>
             );
           })}
