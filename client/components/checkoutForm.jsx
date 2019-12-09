@@ -21,11 +21,14 @@ class CheckoutForm extends React.Component {
         creditCardNumber: null,
         expiration: null,
         CVV: null
-      }
+      },
+      valid: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleConfirmationPage = this.handleConfirmationPage.bind(this);
+    this.validateForm = this.validateForm.bind(this);
+    this.validateInput = this.validateInput.bind(this);
   }
 
   handleInputChange(event) {
@@ -47,9 +50,59 @@ class CheckoutForm extends React.Component {
   }
   handleClick(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    this.handleConfirmationPage();
-    setTimeout(this.props.placeOrder(data), 2000);
+    this.validateForm();
+    if (this.state.valid) {
+      const data = new FormData(event.target);
+      this.handleConfirmationPage();
+      setTimeout(this.props.placeOrder(data), 2000);
+    }
+  }
+  validateForm() {
+    let elements = document.getElementsByTagName('input');
+    let validated = true;
+    for (let i = 0; i < elements.length; i++) {
+      let validate = this.validateInput(elements[i]);
+      if (!validated) {
+        if (this.state.valid) {
+          this.setState({ valid: false });
+        }
+      } else {
+        validated = validate;
+      }
+    }
+    elements = document.getElementsByTagName('select');
+    for (let i = 0; i < elements.length; i++) {
+      let validate = this.validateInput(elements[i]);
+      if (!validated) {
+        if (this.state.valid) {
+          this.setState({ valid: false });
+        }
+      } else {
+        validated = validate;
+      }
+    }
+    this.setState({ valid: validated });
+  }
+  validateInput(target) {
+    const name = target.name;
+    if (name === 'firstName' || name === 'lastName' || name === 'nameOnCard') {
+      return this.handleLetters(target);
+    } else if (name === 'address' || name === 'address2') {
+      return this.handleBothNumbersAndLetter(target);
+    } else if (name === 'email') {
+      return this.handleEmail(target);
+    } else if (
+      name === 'zipcode' ||
+      name === 'ccNumber' ||
+      name === 'ccv' ||
+      name === 'expiration'
+    ) {
+      return this.handleNumbers(target);
+    } else if (name === 'state' || name === 'country') {
+      return this.handleDropDown(target);
+    } else {
+      return true;
+    }
   }
   cartItemCount(cart) {
     var sum = 0;
@@ -64,6 +117,84 @@ class CheckoutForm extends React.Component {
 
   handleConfirmationPage() {
     this.props.setView('thankyouconfirmationpage', {});
+  }
+  handleDropDown(target) {
+    const value = target.value;
+    if (value === null) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      target.nextSibling.classList.add('d-block');
+      return false;
+    }
+  }
+  handleNumbers(target) {
+    const number = /^[0-9]+$/;
+    const value = target.value;
+    if (value.match(number)) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      // if (target.name === 'zipcode' && target.value === '') {
+      //   target.nextSibling.innerHTML('Please enter a zip code.');
+      // }
+      target.nextSibling.classList.add('d-block');
+      return false;
+    }
+  }
+
+  handleLetters(target) {
+    const letters = /^[A-Za-z_\s]+$/;
+    const value = target.value;
+    if (value.match(letters)) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      // if (target.name === 'firstName' && target.value === '') {
+      //   target.nextSibling.innerHTML = 'Please enter your first name.';
+      // } else if (target.name === 'lastName' && target.value === '') {
+      //   target.nextSibling.innerHTML = 'Please enter your last name.';
+      // } else if (target.name === 'nameOnCard' && target.value === '') {
+      //   target.nextSibling.innerHTML = 'Please enter your name.';
+      // }
+      target.nextSibling.classList.add('d-block');
+    }
+    return false;
+  }
+
+  handLengthRange(target, minlength, maxlength) {
+    const userInput = target.value;
+    if (userInput.length >= minlength && userInput.length <= maxlength) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      target.nextSibling.classList.add('d-block');
+      return false;
+    }
+  }
+
+  handleEmail(target) {
+    const mailformat = /^\w+([.-]?\w+)*@\w+([.-]? \w+)*(\.\w{2,3})+$/;
+    const value = target.value;
+    if (value.match(mailformat)) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      target.nextSibling.classList.add('d-block');
+      return false;
+    }
+  }
+
+  handleBothNumbersAndLetter(target) {
+    const letterNumber = /^\s*\S+(?:\s+\S+){2}/;
+    const value = target.value;
+    if (value.match(letterNumber)) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      target.nextSibling.classList.add('d-block');
+      return false;
+    }
   }
 
   render(props) {
@@ -90,8 +221,8 @@ class CheckoutForm extends React.Component {
                   >
                     <BasketItem
                       cart={item}
-                      deleteFromCart={this.props.deleteFromCart} />
-
+                      deleteFromCart={this.props.deleteFromCart}
+                    />
                   </li>
                 );
               })}
@@ -106,7 +237,7 @@ class CheckoutForm extends React.Component {
           </div>
           <div className="col-md-8 order-md-1">
             <h4 className="mb-3">Billing address</h4>
-            <form className="needs-validation" onSubmit={this.handleClick}>
+            <form className="needs-validation" noValidate>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="firstName">First name</label>
@@ -115,6 +246,9 @@ class CheckoutForm extends React.Component {
                     className="form-control"
                     name="firstName"
                     id="firstName"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Name"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -128,7 +262,11 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
+                    name="lastName"
                     id="lastName"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Last Name"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -141,17 +279,22 @@ class CheckoutForm extends React.Component {
 
               <div className="mb-3">
                 <label htmlFor="email">
-                  Email <span className="text-muted">(Optional)</span>
+                  Email
                 </label>
                 <input
                   type="email"
                   className="form-control"
+                  name="email"
                   id="email"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Invalid E-mail"
                   placeholder=""
                   onChange={this.handleInputChange}
+                  required
                 />
                 <div className="invalid-feedback">
-                  Please enter a valid email address for shipping updates.
+                  Please enter a valid email address.
                 </div>
               </div>
 
@@ -162,6 +305,10 @@ class CheckoutForm extends React.Component {
                   className="form-control"
                   id="address"
                   placeholder=""
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Invalid address"
+                  name="address"
                   required
                   onChange={this.handleInputChange}
                 />
@@ -178,6 +325,9 @@ class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   id="address2"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Invalid Address"
                   placeholder="Apartment or suite"
                   onChange={this.handleInputChange}
                 />
@@ -189,6 +339,7 @@ class CheckoutForm extends React.Component {
                   <select
                     className="custom-select d-block w-100"
                     id="country"
+                    name="country"
                     required
                   >
                     <option value="">Choose...</option>
@@ -204,6 +355,7 @@ class CheckoutForm extends React.Component {
                   <select
                     className="custom-select d-block w-100"
                     id="state"
+                    name="state"
                     required
                   >
                     <option value="">Choose...</option>
@@ -268,7 +420,11 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
+                    name="zipcode"
                     id="zip"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Zip Code"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -300,75 +456,38 @@ class CheckoutForm extends React.Component {
                 </label>
               </div>
               <hr className="mb-4" />
-
-              <h4 className="mb-3">Payment</h4>
-
-              <div className="d-block my-3">
-                <div className="custom-control custom-radio">
-                  <input
-                    id="credit"
-                    name="paymentMethod"
-                    type="radio"
-                    className="custom-control-input"
-                    checked
-                    required
-                    onChange={this.handleInputChange}
-                  />
-                  <label className="custom-control-label" htmlFor="credit">
-                    Credit card
-                  </label>
-                </div>
-                <div className="custom-control custom-radio">
-                  <input
-                    id="debit"
-                    name="paymentMethod"
-                    type="radio"
-                    className="custom-control-input"
-                    required
-                    onChange={this.handleInputChange}
-                  />
-                  <label className="custom-control-label" htmlFor="debit">
-                    Debit card
-                  </label>
-                </div>
-                <div className="custom-control custom-radio">
-                  <input
-                    id="paypal"
-                    name="paymentMethod"
-                    type="radio"
-                    className="custom-control-input"
-                    required
-                    onChange={this.handleInputChange}
-                  />
-                  <label className="custom-control-label" htmlFor="paypal">
-                    PayPal
-                  </label>
-                </div>
-              </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label htmlFor="cc-name">Name on card</label>
                   <input
                     type="text"
                     className="form-control"
+                    name="nameOnCard"
                     id="cc-name"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Name"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
                   />
-                  <small className="text-muted">
+                  <small className="invalid-feedback">
                     Full name as displayed on card
                   </small>
-                  <div className="invalid-feedback">
+                  {/* <div className="invalid-feedback">
                     Name on card is required
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="cc-number">Credit card number</label>
                   <input
                     type="text"
                     className="form-control"
+                    name="ccNumber"
                     id="cc-number"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Credit Card Number"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -384,7 +503,11 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
+                    name="expiration"
                     id="cc-expiration"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Number"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -398,7 +521,11 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
+                    name="ccv"
                     id="cc-cvv"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Invalid Number"
                     placeholder=""
                     required
                     onChange={this.handleInputChange}
@@ -411,7 +538,12 @@ class CheckoutForm extends React.Component {
                 *Reminder! This site is for demo purposes and this is not a real
                 order.
               </div>
-              <button type="submit button" data-toggle="modal" data-target="#thankyouModal">Checkout</button>
+              <button
+                type="button"
+                onClick={this.handleClick}
+              >
+                Checkout
+              </button>
             </form>
           </div>
         </div>

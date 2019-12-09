@@ -7,13 +7,12 @@ export default function FeaturedProducts(props) {
   return (
     <div id="bestSeller" className="">
       <h4 className="mt-5 py-1 text-center underlineRed ">Featured Products</h4>
-      {/* <span className="underlineRed m-2"></span> */}
       <div className="d-flex flex-wrap">
         {productList.map(item => {
           return (
             <div className="featuredProducts card dotsBordersRight my-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 d-none d-flex flex-column justify-content-center" key={item.id}>
               <div className='quickLook'>
-                <span className="text-center">Quick Look</span>
+                <a href="#" onClick={() => props.showQuickLook(item)} data-toggle="modal" data-target="#quickLookModal"><span className="text-center">Quick Look</span></a>
               </div>
               {<img className="propsFeaturedImage" src={item.image} onClick={() => props.setView('detail', { id: item.id })} />}
               <div className="card-body">

@@ -3,14 +3,17 @@ import React from 'react';
 import FeaturedProducts from './featuredProducts';
 import DemoModal from './demoModal';
 import MyAd from './ad1';
+import QuickLookModal from './quickLookModal';
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      quickLookModal: { show: false, product: {} }
     };
-
+    this.showQuickLook = this.showQuickLook.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   getProducts() {
     fetch('./api/products.php')
@@ -21,22 +24,27 @@ class HomePage extends React.Component {
         this.setState({ products: products })
       );
   }
-
+  showQuickLook(product) {
+    this.setState({ quickLookModal: { show: true, product: product } });
+  }
+  handleAddToCart(product) {
+    const qty = document.getElementById('qty').value;
+    this.props.AddToCart(product, qty);
+  }
   componentDidMount() {
     this.getProducts();
   }
 
   render() {
-    // const frontPageArr = ['../image/frontCover1.jpeg', '../image/frontCover2.jpg', '../image/frontCover4.jpg'];
     let featureProducts;
     if (this.state.products.length > 0) {
-      featureProducts = <FeaturedProducts FeaturedProducts = {this.state.products} setView={this.props.setView}/>;
+      featureProducts = <FeaturedProducts FeaturedProducts = {this.state.products} setView={this.props.setView} showQuickLook={this.showQuickLook}/>;
     }
 
     return (
       <div className="col-12 mt-4">
         <DemoModal />
-        {/* <Carousel2 frontPageArr={frontPageArr} setView={this.props.setView}/> */}
+        <QuickLookModal product={this.state.quickLookModal.product} handleAddToCart={this.handleAddToCart}/>
         <MyAd setView={this.props.setView} />
         {featureProducts}
       </div>

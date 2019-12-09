@@ -12,7 +12,6 @@ if($method === 'POST'){
     require('cart_add.php');
 }else if($method === 'GET'){
     require('cart_get.php');
-
 }else if($method === 'PUT'){
     require('cart_update.php');
 }else if($method === 'DELETE'){

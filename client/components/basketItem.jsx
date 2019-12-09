@@ -15,9 +15,11 @@ export default function basketItem(props) {
         </div>
         <span className="text-muted text-dark d-block d-flex">{price}</span>
       </div>
-      <div className="col-1 my-auto text-center" onClick={() => props.deleteFromCart(cart.id)}>
-        <i className="fa removeIcon"></i>
-      </div>
+      <a href="#">
+        <div className="col-1 my-auto text-center" onClick={() => props.deleteFromCart(cart.id)}>
+          <i className="fa removeIcon"></i>
+        </div>
+      </a>
     </div>
   );
 }

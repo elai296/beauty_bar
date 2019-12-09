@@ -155,10 +155,6 @@ button {
 }
 
 .borderDetail {
-  border-image: url(./image/dotBorder.svg) 9 repeat;
-  border-image-width: 3px 0 3px 0;
-  border-width: 3px 3px 3px 3px;
-  border-style: solid;
   padding: 30px;
 }
 
@@ -346,3 +342,15 @@ button {
   border: none;
 }
 
+a:link{
+  color: #303e48;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #303e48;
+}
+
+a:visited { 
+  color: #303e48 
+}

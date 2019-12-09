@@ -46,7 +46,7 @@ class ProductDetails extends React.Component {
               <div className="detailName p-2">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
               <div className="borderDetail">
-                <select name="quantity" className="col-1 cartQty align-items-center my-auto mr-3" id='qty'>
+                <select name="quantity" className="cartQty align-items-center my-auto mr-3" id='qty'>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -62,9 +62,10 @@ class ProductDetails extends React.Component {
               </div>
               <div className="detailDescription p-2">{this.state.product.shortDescription}</div>
               <div className="detailDescription mt-4">{this.state.product.longDescription}</div>
-              <div className="pt-5"onClick={this.handleClick}>
+              <a href="#"><div className="pt-5"onClick={this.handleClick}>
                 {'< Return to Shopping'}
               </div>
+              </a>
             </div>
           </div>
         </div>

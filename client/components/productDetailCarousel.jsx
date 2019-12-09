@@ -16,18 +16,20 @@ class ProductDetailCarousel extends Component {
 
   render() {
     return (
-      <div className="productCarousel">
-        <div className="firstPicProductDetailCarousel">{<img src={this.props.images[this.state.position]} />}</div>
-        <div className="carouselPictures">
-          {this.props.images.map((picture, i) => {
-            return (
-              <div className="carouselDetail " key={i} >
-                {<img src={picture} onMouseOver={() => this.handleImage(i)}/>}
-              </div>
-            );
-          })}
+      <a href="#">
+        <div className="productCarousel">
+          <div className="firstPicProductDetailCarousel">{<img src={this.props.images[this.state.position]} />}</div>
+          <div className="carouselPictures">
+            {this.props.images.map((picture, i) => {
+              return (
+                <div className="carouselDetail " key={i} >
+                  {<img src={picture} onMouseOver={() => this.handleImage(i)}/>}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </a>
     );
   }
 

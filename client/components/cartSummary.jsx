@@ -26,9 +26,10 @@ function returnCart(props) {
     return (
       <div>
         <h4 className="text-center">Your basket is currently empty.</h4>
-        <div className="mt-3 text-center" onClick={e => handleClick(props)}>
+        <a href="#"><div className="mt-3 text-center" onClick={e => handleClick(props)}>
           {'< Return to Shopping'}
         </div>
+        </a>
       </div>);
   } else {
     return (
@@ -52,9 +53,11 @@ function returnCart(props) {
         <div className="cartSummaryCalculation text-right">
           Item Total({cartItemCount(props.cart)} items): {props.CartSummaryCalculate(props.cart)}
         </div>
-        <div className="text-left mt-3" onClick={e => handleClick(props)}>
-          {'< Return to Shopping'}
-        </div>
+        <a href="#">
+          <div className="text-left mt-3" onClick={e => handleClick(props)}>
+            {'< Return to Shopping'}
+          </div>
+        </a>
         <div className="text-right">
           <button className="checkOutbutton "onClick={() => handleCheckOut(props)}>PLACE ORDER</button>
         </div>
