@@ -22,7 +22,7 @@ class CheckoutForm extends React.Component {
         expiration: null,
         CVV: null
       },
-      valid: false
+      g: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,15 +44,21 @@ class CheckoutForm extends React.Component {
       name = name[0];
       value = addressCopy;
     }
-    this.setState({
-      [name]: value
-    });
+    if (name === 'nameOnCard' || name === 'creditCardNumber' || name === 'expiration' || name === 'CVV') {
+      this.setState(prevState => ({
+        payment: { ...prevState.payment, [name]: value }
+      }));
+    } else {
+      this.setState(prevState => ({
+        billingAddress: { ...prevState.billingAddress, [name]: value }
+      }));
+    }
   }
   handleClick(event) {
     event.preventDefault();
     this.validateForm();
     if (this.state.valid) {
-      const data = new FormData(event.target);
+      const data = new FormData(document.querySelector('form'));
       this.handleConfirmationPage();
       setTimeout(this.props.placeOrder(data), 2000);
     }
@@ -120,7 +126,7 @@ class CheckoutForm extends React.Component {
   }
   handleDropDown(target) {
     const value = target.value;
-    if (value === null) {
+    if (value !== '') {
       target.nextSibling.classList.remove('d-block');
       return true;
     } else {
@@ -135,9 +141,6 @@ class CheckoutForm extends React.Component {
       target.nextSibling.classList.remove('d-block');
       return true;
     } else {
-      // if (target.name === 'zipcode' && target.value === '') {
-      //   target.nextSibling.innerHTML('Please enter a zip code.');
-      // }
       target.nextSibling.classList.add('d-block');
       return false;
     }
@@ -150,13 +153,6 @@ class CheckoutForm extends React.Component {
       target.nextSibling.classList.remove('d-block');
       return true;
     } else {
-      // if (target.name === 'firstName' && target.value === '') {
-      //   target.nextSibling.innerHTML = 'Please enter your first name.';
-      // } else if (target.name === 'lastName' && target.value === '') {
-      //   target.nextSibling.innerHTML = 'Please enter your last name.';
-      // } else if (target.name === 'nameOnCard' && target.value === '') {
-      //   target.nextSibling.innerHTML = 'Please enter your name.';
-      // }
       target.nextSibling.classList.add('d-block');
     }
     return false;
@@ -341,6 +337,7 @@ class CheckoutForm extends React.Component {
                     id="country"
                     name="country"
                     required
+                    onChange={this.handleInputChange}
                   >
                     <option value="">Choose...</option>
                     <option>United States</option>
@@ -357,6 +354,7 @@ class CheckoutForm extends React.Component {
                     id="state"
                     name="state"
                     required
+                    onChange={this.handleInputChange}
                   >
                     <option value="">Choose...</option>
                     <option value="AL">Alabama</option>
@@ -420,7 +418,7 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    name="zipcode"
+                    name="zip"
                     id="zip"
                     data-toggle="tooltip"
                     data-placement="top"
@@ -483,7 +481,7 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    name="ccNumber"
+                    name="creditCardNumber"
                     id="cc-number"
                     data-toggle="tooltip"
                     data-placement="top"
@@ -521,7 +519,7 @@ class CheckoutForm extends React.Component {
                   <input
                     type="text"
                     className="form-control"
-                    name="ccv"
+                    name="CVV"
                     id="cc-cvv"
                     data-toggle="tooltip"
                     data-placement="top"

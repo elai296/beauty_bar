@@ -58,7 +58,7 @@ export default class App extends React.Component {
       body: JSON.stringify(product)
     })
       .then(response => response.json())
-      .then(this.getCartItem());
+      .then(() => this.getCartItem());
   }
 
   deleteFromCart(product) {
@@ -66,13 +66,13 @@ export default class App extends React.Component {
       method: 'DELETE',
       body: JSON.stringify(product)
     })
-      .then(this.getCartItem());
+      .then(() => this.getCartItem());
   }
   updateCart(item, count) {
     fetch('/api/cart.php?id=' + item + '&qty=' + count, {
       method: 'PUT'
     })
-      .then(this.getCartItem());
+      .then(() => this.getCartItem());
   }
 
   cartSummaryCalculate(cart) {
