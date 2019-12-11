@@ -1,7 +1,7 @@
 <?php
 
 // require('cart.php');
-echo $INTERNAL;
+// echo $INTERNAL;
 require_once('functions.php');
 require_once('db_connection.php');
 $isTouch = isset($INTERNAL);
