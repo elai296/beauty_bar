@@ -40,7 +40,8 @@ export default class App extends React.Component {
         response.json()
       )
       .then(cartProducts => {
-        this.setState({ cart: cartProducts }, this.setState({ cartItems: this.sumCartItem(this.state.cart) }));
+        console.log(cartProducts);
+        this.setState({ cart: cartProducts, cartItems: this.sumCartItem(this.state.cart) });
       });
   }
 
