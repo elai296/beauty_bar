@@ -58,7 +58,6 @@ export default class App extends React.Component {
       body: JSON.stringify(product)
     })
       .then(() => this.getCartItem());
-    // .then(response => response.json())
   }
 
   deleteFromCart(product) {
