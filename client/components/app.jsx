@@ -57,8 +57,8 @@ export default class App extends React.Component {
       method: 'POST',
       body: JSON.stringify(product)
     })
-      // .then(response => response.json())
       .then(() => this.getCartItem());
+    // .then(response => response.json())
   }
 
   deleteFromCart(product) {
