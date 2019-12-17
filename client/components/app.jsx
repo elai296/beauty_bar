@@ -41,7 +41,7 @@ export default class App extends React.Component {
       )
       .then(cartProducts => {
         console.log(cartProducts);
-        this.setState({ cart: cartProducts, cartItems: this.sumCartItem(this.state.cart) });
+        this.setState({ cart: cartProducts, cartItems: this.sumCartItem(cartProducts) });
       });
   }
 
@@ -57,7 +57,8 @@ export default class App extends React.Component {
       method: 'POST',
       body: JSON.stringify(product)
     })
-      .then(response => response.json(), () => this.getCartItem());
+      .then(response => response.json())
+      .then(() => this.getCartItem());
   }
 
   deleteFromCart(product) {
