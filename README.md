@@ -1,67 +1,50 @@
-# wicked-sales
+# Beauty Bar
 
-A full stack LAMP & React shopping cart app.
+An online e-commerce website for beauty items. Customers can view, add, update and delete products from their cart, and also submit their orders.
 
-## Introduction
+## <a href="http://beautybar.elainevphan.com/">Live Demo </a>
+![](./assets/images/PeppaPig.gif)
 
-For this project, you will be building a single-page React application and a dynamic PHP API.
 
 ## Getting Started
 
-1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
-2. Check out a `dev` branch and push it to `origin`.
-    ```
-    git push origin dev
-    ```
-3. Install all dependencies in `package.json` with NPM.
-    ```
-    npm install
-    ```
-4. Add the `wicked-sales.localhost` site to Apache by copying the provided virtual host configuration in the `server` directory to `/etc/apache2/sites-available`.
-    ```
-    sudo cp server/wicked-sales.localhost.conf /etc/apache2/sites-available
-    ```
-5. Enable the `wicked-sales.locahost` site.
-   ```
-   sudo a2ensite wicked-sales.localhost
-   ```
-6. Restart the Apache web server.
-   ```
-   sudo service apache2 restart
-   ```
-7. Start `webpack-dev-server` running the provided `"dev"` script in `package.json`.
-   ```
-   npm run dev
-   ```
-8. Open a new terminal into your development environment to test that Webpack Dev Server and Apache are working together. Send a GET request to `localhost:3000/api/products.php`.
-   ```
-   http get localhost:3000/api/products.php
-   ```
-   You should receive `200 OK` response containing a JSON `Array` of products.
+1. Fork and clone from this repository onto your local machine
+```
+$ git clone https://github.com/elai296/beautyBar.git
+```
+2. In your terminal, navigate into the cloned directory and install the required dependencies
+```
+$ npm install
+```
+3. Create a database titled beauty_bar in phpMyAdmin and import the beauty_bar.sql file
 
-## Features
+4. Ensure that the Apache service is installed and running
 
-There are [Markdown](https://guides.github.com/features/mastering-markdown/) files located in the `features` directory of this project that contain useful links and task lists for each feature of the application.
+5. Initiate the dev server
+```
+$ npm run dev
+```
+6. In your local browser go to ```localhost:3000```
 
-For each Markdown file, create a new Issue on your fork's GitHub repository and paste the content of the Markdown file into the **first** comment box. Give the Issue a clear title (usually the heading at the top of the Markdown file).
+7. Record Repo is ready to go!
 
-It is possible that your fork does not have Issues enabled by default.
+## Contributing
 
-![Issues Disabled](features/assets/issues-disabled.png)
+Please feel free to fork from this repository, make pull requests and help improve the game by sending suggestions to elainep926@gmail.com
 
-If you do not see an **Issues** tab at the top of your fork's page, then go to its **Settings** tab and check the box to enable **Issues**.
+## Built With
 
-![Issues Enabled](features/assets/issues-enabled.png)
+* Front-End
+  * [JavaScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+  * [React.js](https://reactjs.org/)
+  * [Reactstrap](https://reactstrap.github.io/)
+* Back-End
+  * [PHP](https://php.net/)
+  * [MySQL](https://www.mysql.com/) + [phpMyAdmin](https://www.phpmyadmin.net/)
 
-## A note about Issue numbers
 
-GitHub automatically assigns Issue numbers when you open them. The numbers that GitHub gives your Issues are not meaningful in any way other than unique identification, so the order that you open Issues doesn't really matter. It _does_ matter what order you work on each feature for the project. The name of each Markdown file in `features` includes a number designating the order in which they should be implemented.
+## License
 
-## A note about commit messages
+This project is licensed under the MIT License - see the below for details.
 
-As you work through each task of a given feature, make a commit. It's good to get into the habit of making incremental progress on a project. Each commit message that you write should be concise, but descriptive enough that another developer can guess what you did in the code without having to actually read the code.
-
-## NPM Scripts
-
-- `dev` - Start Webpack Dev Server at `localhost:3000`
-- `build` - Run Webpack to build the React client into `server/public`.
+<a href="https://opensource.org/licenses/mit-license.php">MIT License</a>
