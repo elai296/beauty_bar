@@ -13,8 +13,10 @@ export default function quickLookModal(props) {
           </div>
           <div className="modal-body text-center pb-5">
             <div className= "row no-gutters d-flex justify-content-center">
-              {<img src={product.image} className="card-img propsImageCartSummaryItem col-2" alt="imgSrc"/>}
-              <div className="card-title propsNameCartSummaryItem col-6 pl-5 my-auto text-center">
+              <div className="col-4">
+                {<img src={product.image} className="card-img propsImageCartSummaryItem" alt="imgSrc"/>}
+              </div>
+              <div className="card-title propsNameCartSummaryItem col-6 my-auto text-center">
                 <h4>{product.brand}</h4>
                 <h5>{product.name}</h5>
                 <h6>{'$' + (product.price * 0.01).toFixed(2)}</h6>

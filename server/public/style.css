@@ -31,15 +31,15 @@ body {
   color: #303e48;
 }
 .basketImage {
-  height: 30%;
-  width: 30%;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 .propsImage {
   height: 150px;
   width: 100%;
   border-radius: 10px;
   margin: 1vh auto;
-  background-size: cover;
 }
 .vignette-inset {
   margin: 1vh auto;
@@ -147,8 +147,16 @@ button {
   color: #fff;
   border-radius: 3px;
   border-color: #bc2226;
+  padding:.375rem .75rem;
 }
-
+.card-img{
+  object-fit: contain;
+}
+.imgObjFitContain{
+  object-fit: contain;
+  height:100%;
+  width:100%
+}
 .imageBorder {
   border: solid 15px;
   border-color: #a1a09f;

@@ -98,9 +98,9 @@ class CheckoutForm extends React.Component {
     } else if (name === 'email') {
       return this.handleEmail(target);
     } else if (
-      name === 'zipcode' ||
-      name === 'ccNumber' ||
-      name === 'ccv' ||
+      name === 'zip' ||
+      name === 'creditCardNumber' ||
+      name === 'CVV' ||
       name === 'expiration'
     ) {
       return this.handleNumbers(target);

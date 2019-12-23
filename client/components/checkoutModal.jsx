@@ -20,7 +20,9 @@ export default function CheckoutModal(props) {
           </div>
           <div className="modal-body text-center pb-5">
             <div className= "row no-gutters d-flex justify-content-center">
-              {<img src={props.product.images[0]} className="card-img propsImageCartSummaryItem col-2" alt="imgSrc"/>}
+              <div className="col-4">
+                {<img src={props.product.images[0]} className="card-img propsImageCartSummaryItem" alt="imgSrc"/>}
+              </div>
               <div className="card-title propsNameCartSummaryItem col-6 pl-5 my-auto text-center">
                 <h5>{props.product.brand}</h5>
                 <h6>{props.product.name}</h6>
