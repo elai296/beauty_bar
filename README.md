@@ -10,7 +10,7 @@ An online e-commerce website for beauty items. Customers can view, add, update a
 
 1. Fork and clone from this repository onto your local machine
 ```
-$ git clone https://github.com/[user_name]/beautyBar.git
+$ git clone https://github.com/[user_name]/beauty_bar.git
 ```
 2. In your terminal, navigate into the cloned directory and install the required dependencies
 ```
