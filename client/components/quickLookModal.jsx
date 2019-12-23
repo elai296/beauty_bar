@@ -34,7 +34,7 @@ export default function quickLookModal(props) {
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </select>
-                <button className="addToCartButton" onClick={() => props.handleAddToCart(product)} data-toggle="modal" data-target="#quickLookModal">ADD TO BASKET</button>
+                <button onClick={() => props.handleAddToCart(product)} data-toggle="modal" data-target="#quickLookModal">ADD TO BASKET</button>
               </div>
               <div className="modal-footer borderDetail">
                 <p>{product.shortDescription}</p>
