@@ -16,7 +16,7 @@ $ git clone https://github.com/[user_name]/beauty_bar.git
 ```
 $ npm install
 ```
-3. Create a database titled Wicked Sales in phpMyAdmin and import the Wicked Sales.sql file
+3. Create a database titled Wicked Sales in phpMyAdmin and import the Wicked_Sales (1).sql file
 
 4. Ensure that the Apache service is installed and running
 
