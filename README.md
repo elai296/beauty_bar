@@ -3,7 +3,7 @@
 An online e-commerce website for beauty items. Customers can view, add, update and delete products from their cart, and also submit their orders.
 
 ## <a href="http://beautybar.elainevphan.com/">Live Demo </a>
-![](./assets/images/PeppaPig.gif)
+![](./public/images/beautyBar1.gif)
 
 
 ## Getting Started
