@@ -26,7 +26,7 @@ $ npm run dev
 ```
 6. In your local browser go to ```localhost:3000```
 
-7. Record Repo is ready to go!
+7. beauty_bar is ready to go!
 
 ## Contributing
 
