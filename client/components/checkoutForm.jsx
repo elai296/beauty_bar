@@ -330,7 +330,7 @@ class CheckoutForm extends React.Component {
               </div>
 
               <div className="row">
-                <div className="col-md-5 mb-3">
+                {/* <div className="col-md-5 mb-3">
                   <label htmlFor="country">Country</label>
                   <select
                     className="custom-select d-block w-100"
@@ -341,12 +341,11 @@ class CheckoutForm extends React.Component {
                   >
                     <option value="">Choose...</option>
                     <option>United States</option>
-                    <option>Canada</option>
                   </select>
                   <div className="invalid-feedback">
                     Please select a valid country.
                   </div>
-                </div>
+                </div> */}
                 <div className="col-md-4 mb-3">
                   <label htmlFor="state">State</label>
                   <select

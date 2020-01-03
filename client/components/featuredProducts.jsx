@@ -5,7 +5,7 @@ export default function FeaturedProducts(props) {
   productList.length = 4;
 
   return (
-    <div id="bestSeller" className="">
+    <div id="bestSeller container" className="">
       <h4 className="mt-5 py-1 text-center underlineRed ">Featured Products</h4>
       <div className="d-flex flex-wrap">
         {productList.map(item => {

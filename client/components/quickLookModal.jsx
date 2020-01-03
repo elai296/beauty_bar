@@ -1,5 +1,16 @@
 import React from 'react';
 
+function onUpdate(input, btn) {
+  let count = input.value;
+  if (btn === 'plus') {
+    count++;
+  } else {
+    count--;
+  }
+  if (count > 0) {
+    input.value = count;
+  }
+}
 export default function quickLookModal(props) {
   const product = props.product;
   return (
@@ -22,19 +33,18 @@ export default function quickLookModal(props) {
                 <h6>{'$' + (product.price * 0.01).toFixed(2)}</h6>
               </div>
               <div className="borderDetail">
-                <select name="quantity" className="cartQty align-items-center my-auto mr-3" id='qty'>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-                <button onClick={() => props.handleAddToCart(product)} data-toggle="modal" data-target="#quickLookModal">ADD TO BASKET</button>
+                <div className="quantity">
+                  <button className="plus-btn" type="button" name="plus" onClick={e => onUpdate(e.currentTarget.nextSibling, e.currentTarget.name)}>
+                    <i className="fas fa-plus"></i>
+                  </button>
+                  <input id="qty" className="text-center" type="text" name="quantity" defaultValue="1" />
+                  <button className="minus-btn" type="button" name="minus" onClick={e => onUpdate(e.currentTarget.previousSibling, e.currentTarget.name)}>
+                    <i className="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div className="m-4">
+                  <button onClick={() => props.handleAddToCart(product)} data-toggle="modal" data-target="#quickLookModal">ADD TO BASKET</button>
+                </div>
               </div>
               <div className="modal-footer borderDetail">
                 <p>{product.shortDescription}</p>
