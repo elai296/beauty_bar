@@ -162,9 +162,6 @@ button {
   border-color: #a1a09f;
 }
 
-.borderDetail {
-  padding: 30px;
-}
 
 .detailContainer {
   font-family: "Noto Serif SC", serif;
@@ -363,3 +360,13 @@ a:hover{
 a:visited { 
   color: #303e48 
 }
+
+.quantity input{
+  width: 2em;
+}
+.plus-btn, .minus-btn{
+  font-size: 10px;
+}
+/* #cartSummary *{
+  outline:1px solid black;
+} */

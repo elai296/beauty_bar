@@ -35,11 +35,11 @@ function returnCart(props) {
     return (
       <div>
         <div className="row">
-          <div className="col-12 row dotsBordersTB pt-1 mt-3 pb-1 mb-3">
+          <div className="col-12 d-flex dotsBordersTB py-1 my-3">
             <div className="col-2"></div>
-            <div className="col-6 pl-5 text-center my-auto">PRODUCT</div>
+            <div className="col-5 pl-5 text-center my-auto">PRODUCT</div>
             <div className="col-2 text-center">PRICE</div>
-            <div className="col-1 text-center">QUANTITY</div>
+            <div className="col-3 text-center">QUANTITY</div>
 
           </div>
           {!props.cart ? null : props.cart.map(item => {

@@ -21,6 +21,18 @@ class ProductDetails extends React.Component {
       });
   }
 
+  onUpdate(input, btn) {
+    let count = input.value;
+    if (btn === 'plus') {
+      count++;
+    } else {
+      count--;
+    }
+    if (count > 0) {
+      input.value = count;
+    }
+  }
+
   handleClick(productId) {
     this.props.setView('catalog', { id: productId });
   }
@@ -35,7 +47,7 @@ class ProductDetails extends React.Component {
       return null;
     } else {
       return (
-        <div className="detailContainer">
+        <div className="detailContainer container">
           <CheckoutModal product={this.state.product} setView={this.props.setView} itemQty={qty}/>
           <div className="row justify-content-center mt-3">
             <div className="col-md-4">
@@ -45,30 +57,29 @@ class ProductDetails extends React.Component {
               <div className="detailBrand p-2 font-weight-bold">{this.state.product.brand}</div>
               <div className="detailName p-2">{this.state.product.name}</div>
               <div className="p-2">{'$' + (this.state.product.price * 0.01).toFixed(2)}</div>
-              <div className="borderDetail">
-                <select name="quantity" className="cartQty align-items-center my-auto mr-3" id='qty'>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-                <button className="addToCartButton" onClick={e => this.handleAddToCart(this.state.product)} data-toggle="modal" data-target="#checkoutModal">ADD TO BASKET</button>
+              <div className="quantity">
+                <button className="plus-btn" type="button" name="plus" onClick={e => this.onUpdate(e.currentTarget.nextSibling, e.currentTarget.name)}>
+                  <i className="fas fa-plus"></i>
+                </button>
+                <input id="qty" className="text-center" type="text" name="quantity" defaultValue="1" />
+                <button className="minus-btn" type="button" name="minus" onClick={e => this.onUpdate(e.currentTarget.previousSibling, e.currentTarget.name)}>
+                  <i className="fas fa-minus"></i>
+                </button>
               </div>
+              <button className="addToCartButton mt-4 ml-0" onClick={e => this.handleAddToCart(this.state.product)} data-toggle="modal" data-target="#checkoutModal">ADD TO BASKET</button>
+            </div>
+            <div className="container">
               <div className="detailDescription p-2">{this.state.product.shortDescription}</div>
               <div className="detailDescription mt-4">{this.state.product.longDescription}</div>
-              <a href="#"><div className="pt-5"onClick={this.handleClick}>
-                {'< Return to Shopping'}
-              </div>
+              <a href="#">
+                <div className="pt-5"onClick={this.handleClick}>
+                  {'< Return to Shopping'}
+                </div>
               </a>
             </div>
           </div>
         </div>
+
       );
     }
   }

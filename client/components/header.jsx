@@ -27,7 +27,7 @@ function Header(props) {
               <a className="shop nav-link headerHover text-dark" href="#"onClick={e => handleClickProductList(props)} data-toggle="collapse" data-target="#navbarNav">SHOP</a>
             </li>
             <li className="nav-item  my-auto pl-3 pr-3">
-              <a href='#' className="fas nav-link fa-shopping-basket shoppingBasket headerHover text-dark" onClick={e => handleClick(props)} data-toggle="collapse" data-target="#navbarNav">{props.cartItemCount} items</a>
+              <a href='#' className="nav-link shoppingBasket headerHover text-dark" onClick={e => handleClick(props)} data-toggle="collapse" data-target="#navbarNav"><i className="fas fa-shopping-basket"></i> {props.cartItemCount} items</a>
             </li>
           </ul>
         </div>
