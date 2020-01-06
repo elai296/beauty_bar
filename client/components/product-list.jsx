@@ -36,7 +36,7 @@ class ProductList extends React.Component {
     this.props.AddToCart(product, qty);
   }
   showQuickLook(product) {
-    this.setState({ quickLookModal: { show: true, product: product } }, () => console.log(this.state));
+    this.setState({ quickLookModal: { show: true, product: product } });
   }
   render() {
 
