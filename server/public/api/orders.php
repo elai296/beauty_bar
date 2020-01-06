@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 header('Content-Type: application/json');
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -14,8 +15,8 @@ if ($method != 'POST') {
 } else {
   http_response_code(201);
   session_destroy();
-  print($order);
-  print('session destroy');
+  print(json_encode($order));
+  // print('session destroy');
 }
 
 ?>
