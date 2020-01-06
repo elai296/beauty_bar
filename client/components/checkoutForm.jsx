@@ -22,7 +22,7 @@ class CheckoutForm extends React.Component {
         expiration: null,
         CVV: null
       },
-      g: false
+      valid: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -330,22 +330,6 @@ class CheckoutForm extends React.Component {
               </div>
 
               <div className="row">
-                {/* <div className="col-md-5 mb-3">
-                  <label htmlFor="country">Country</label>
-                  <select
-                    className="custom-select d-block w-100"
-                    id="country"
-                    name="country"
-                    required
-                    onChange={this.handleInputChange}
-                  >
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                  </select>
-                  <div className="invalid-feedback">
-                    Please select a valid country.
-                  </div>
-                </div> */}
                 <div className="col-md-4 mb-3">
                   <label htmlFor="state">State</label>
                   <select

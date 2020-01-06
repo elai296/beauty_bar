@@ -15,7 +15,8 @@ export default class App extends React.Component {
     this.state = {
       view: 'home page',
       cart: [],
-      cartItems: 0
+      cartItems: 0,
+      deleteCart: false
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -65,7 +66,8 @@ export default class App extends React.Component {
       method: 'DELETE',
       body: JSON.stringify(product)
     })
-      .then(() => this.getCartItem());
+      .then(() => this.getCartItem(),
+        this.setState({ deleteCart: true }));
   }
   updateCart(item, count) {
     fetch('/api/cart.php?id=' + item + '&qty=' + count, {
