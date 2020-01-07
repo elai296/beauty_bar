@@ -50,7 +50,8 @@ export default class App extends React.Component {
     fetch('/api/orders.php', {
       method: 'POST',
       body: order
-    }).then(response => response.json());
+    }).then(response => response.json())
+      .then(() => this.setState({ cart: [] }, this.getCartItem()));
   }
 
   addToCart(product, quantity) {
