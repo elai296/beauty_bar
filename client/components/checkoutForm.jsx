@@ -22,7 +22,7 @@ class CheckoutForm extends React.Component {
         expiration: null,
         CVV: null
       },
-      valid: true
+      valid: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -57,11 +57,6 @@ class CheckoutForm extends React.Component {
   handleClick(event) {
     event.preventDefault();
     this.validateForm();
-    if (this.state.valid) {
-      const data = new FormData(document.querySelector('form'));
-      this.handleConfirmationPage();
-      setTimeout(this.props.placeOrder(data), 2000);
-    }
   }
   validateForm() {
     let elements = document.getElementsByTagName('input');
@@ -87,7 +82,14 @@ class CheckoutForm extends React.Component {
         validated = validate;
       }
     }
-    this.setState({ valid: validated });
+    this.setState({ valid: validated }, () => {
+      if (this.state.valid) {
+        const data = new FormData(document.querySelector('form'));
+        this.handleConfirmationPage();
+        setTimeout(this.props.placeOrder(data), 2000);
+      }
+    });
+
   }
   validateInput(target) {
     const name = target.name;
