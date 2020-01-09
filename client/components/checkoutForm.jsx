@@ -93,12 +93,37 @@ class CheckoutForm extends React.Component {
   }
   validateInput(target) {
     const name = target.name;
-    if (name === 'firstName' || name === 'lastName' || name === 'nameOnCard') {
-      return this.handleLetters(target);
+    if (name === 'firstName' || name === 'lastName') {
+      const validation = {
+        validate: /^[A-Za-z_\s]+$/,
+        min: 2,
+        max: 32,
+        message: {
+          short: 'Name is too short',
+          long: 'Name is too long',
+          invalid: 'Not a valid name'
+        }
+      };
+      // const validation = /^[A-Za-z_\s]+$/;
+      // return this.handleName(target, 2, 32);
+      return this.handleName(target, validation);
+      // return this.handleName(target, 2, 32, validation);
+    } else if (name === 'nameOnCard') {
+      return this.handleName(target, 2, 64);
     } else if (name === 'address' || name === 'address2') {
       return this.handleBothNumbersAndLetter(target);
     } else if (name === 'email') {
-      return this.handleEmail(target);
+      const validation = {
+        validate: /^\w+([.-]?\w+)*@\w+([.-]? \w+)*(\.\w{2,3})+$/,
+        min: 6,
+        max: 254,
+        message: {
+          short: 'Email is too short',
+          long: 'Email is too long',
+          invalid: 'Not a valid Email'
+        }
+      };
+      return this.handleName(target, validation);
     } else if (
       name === 'zip' ||
       name === 'creditCardNumber' ||
@@ -148,16 +173,32 @@ class CheckoutForm extends React.Component {
     }
   }
 
-  handleLetters(target) {
-    const letters = /^[A-Za-z_\s]+$/;
+  handleName(target, validation) {
+
     const value = target.value;
-    if (value.match(letters)) {
+    if (value.length < validation.min) {
+      target.nextSibling.classList.add('d-block');
+      target.nextSibling.innerHTML = validation.message.short;
+      return false;
+    } else if (value.length > validation.max) {
+      target.nextSibling.classList.add('d-block');
+      target.nextSibling.innerHTML = validation.message.long;
+      return false;
+    }
+
+    if (validation.validate) {
+      if (value.match(validation.validate)) {
+        target.nextSibling.classList.remove('d-block');
+        return true;
+      } else {
+        target.nextSibling.classList.add('d-block');
+        target.nextSibling.innerHTML = validation.message.invalid;
+        return false;
+      }
+    } else {
       target.nextSibling.classList.remove('d-block');
       return true;
-    } else {
-      target.nextSibling.classList.add('d-block');
     }
-    return false;
   }
 
   handLengthRange(target, minlength, maxlength) {
@@ -174,9 +215,13 @@ class CheckoutForm extends React.Component {
   handleEmail(target) {
     const mailformat = /^\w+([.-]?\w+)*@\w+([.-]? \w+)*(\.\w{2,3})+$/;
     const value = target.value;
-    if (value.match(mailformat)) {
+    if (value.match(mailformat) && value.length >= 6) {
       target.nextSibling.classList.remove('d-block');
+      target.nextSibling.innerHTML = 'Email is too short';
       return true;
+    } else if (value.match(mailformat) && value.length <= 254) {
+      target.nextSibling.classList.remove('d-block');
+      target.nextSibling.innerHTML = 'Email is too long';
     } else {
       target.nextSibling.classList.add('d-block');
       return false;
