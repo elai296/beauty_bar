@@ -8,7 +8,6 @@ import CheckoutForm from './checkoutForm';
 import HomePage from './homepage';
 import Footer from './footer.jsx';
 import ThankYouConfirmationPage from './thankYouConfirmationPage';
-import DeleteConfirmation from './deleteComfirmationModal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -133,7 +132,6 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header cartItemCount= {itemCount} setView={this.setView} />
         {display}
-        <DeleteConfirmation />
         <Footer />
       </React.Fragment>
     );

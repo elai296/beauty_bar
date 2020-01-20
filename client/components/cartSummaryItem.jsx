@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import React from 'react';
-import DeleteConfirmationModal from './deleteComfirmationModal';
 
 function onUpdate(input, item, btn, props) {
 
@@ -39,7 +38,7 @@ function CartSummaryItem(props) {
             </button>
           </div>
         </div>
-        <div className="text-center my-auto col-2" onClick={() => props.deleteFromCart(props.item.id)} data-toggle="modal" data-target="#deleteConfirm">
+        <div className="text-center my-auto col-2" data-toggle="modal" data-target="#deleteConfirm">
           <a href="#">
             <i className="fa removeIcon"></i>
           </a>
@@ -63,8 +62,7 @@ function CartSummaryItem(props) {
                 <i className="fas fa-minus"></i>
               </button>
             </div>
-            <div className="text-center my-auto ml-2" onClick={() => props.deleteFromCart(props.item.id)} data-toggle="modal" data-target="#deleteConfirm">
-              <DeleteConfirmationModal />
+            <div className="text-center my-auto ml-2" data-toggle="modal" data-target="#deleteConfirm">
               <a href="#">
                 <i className="fa removeIcon"></i>
               </a>
