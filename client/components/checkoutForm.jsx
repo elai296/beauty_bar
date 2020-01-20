@@ -32,10 +32,10 @@ class CheckoutForm extends React.Component {
   }
 
   handleInputChange(event) {
-    const target = event.target;
+    const target = event.currentTarget;
     let value = target.value;
     let name = target.name;
-
+    target.nextSibling.classList.remove('d-block');
     if (name.substr(0, 7) === 'address') {
       name = name.split('.');
       let name2 = name[1];
@@ -52,6 +52,43 @@ class CheckoutForm extends React.Component {
       this.setState(prevState => ({
         billingAddress: { ...prevState.billingAddress, [name]: value }
       }));
+    }
+    if (name === 'creditCardNumber') {
+      let num = value.toString();
+      if (num.length >= 19) {
+        target.value = num.substr(0, 19);
+      } else if (num.length === 4 || num.length === 9 || num.length === 14) {
+        target.value = num + ' ';
+      } else if (num[num.length - 1] === ' ') {
+        target.value = num.substr(0, num.length - 1);
+      }
+    }
+    if (name === 'expiration') {
+      let num = value.toString();
+      if (num.length >= 7) {
+        target.value = num.substr(0, 7);
+      } else if (num.length === 2) {
+        target.value = num + '/';
+      } else if (num[num.length - 1] === '/') {
+        target.value = num.substr(0, num.length - 1);
+      }
+    }
+    if (name === 'CVV') {
+      let num = value.toString();
+      const number = /^[0-9]+$/;
+      if (num.length >= 4) {
+        target.value = num.substring(0, 3);
+      } else if (!num[num.length - 1].match(number)) {
+        target.value = num.substring(0, num.length - 1);
+      }
+    }
+    if (name === 'lastName' || name === 'firstName') {
+      let num = value.toString();
+      if (num.length >= 2) {
+        target.value = num.substr(0, 2);
+      } else if (num.length >= 32) {
+        target.value = num.substr(32, num.length - 1);
+      }
     }
   }
   handleClick(event) {
@@ -252,7 +289,7 @@ class CheckoutForm extends React.Component {
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-muted">ORDER SUMMARY</span>
               <span className="badge badge-secondary badge-pill">
-                {this.cartItemCount(this.props.cart)} items
+                Total: {this.cartItemCount(this.props.cart)} items
               </span>
             </h4>
             <ul className="list-group mb-4">
@@ -265,6 +302,7 @@ class CheckoutForm extends React.Component {
                     <BasketItem
                       cart={item}
                       deleteFromCart={this.props.deleteFromCart}
+
                     />
                   </li>
                 );
@@ -527,7 +565,7 @@ class CheckoutForm extends React.Component {
               </div>
               <div className="row">
                 <div className="col-md-3 mb-3">
-                  <label htmlFor="cc-expiration">Expiration</label>
+                  <label htmlFor="cc-expiration">Expiration (MM/YYYY)</label>
                   <input
                     type="text"
                     className="form-control"
