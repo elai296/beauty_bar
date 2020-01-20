@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteConfirmationModal from './deleteComfirmationModal';
 
 export default function basketItem(props) {
   const cart = props.cart;
@@ -14,8 +15,11 @@ export default function basketItem(props) {
         <h6 className="my-0 text-dark">{cart.name}</h6>
         <span className="text-muted text-dark d-block d-flex">{price}</span>
       </div>
-      <div className="col-1 text-center p-0" onClick={() => props.deleteFromCart(cart.id)}>
-        <a href="#"><i className="fa removeIcon"></i></a>
+      <div className="col-1 text-center p-0">
+        <div className="text-center my-auto ml-2" data-toggle="modal" data-target="#deleteConfirm">
+          <DeleteConfirmationModal delete={() => props.deleteFromCart(cart.id)} />
+          <a href="#"><i className="fa removeIcon"></i></a>
+        </div>
       </div>
     </div>
   );

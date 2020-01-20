@@ -28,5 +28,4 @@ if(mysqli_affected_rows($conn)!==1){
     $query="COMMIT";
     mysqli_query($conn, $query);
 }
-require('cart_get copy.php');
 ?>

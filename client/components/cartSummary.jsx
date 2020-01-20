@@ -1,5 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cartSummaryItem';
+import DeleteConfirmationModal from './deleteComfirmationModal';
 
 function handleClick(props) {
   props.setView('catalog', {});
@@ -50,6 +51,7 @@ function returnCart(props) {
           {!props.cart ? null : props.cart.map(item => {
             return (
               <div className="cartSummaryItem mb-3 dotsBordersBottom pb-3 col-12" key={item.id}>
+                <DeleteConfirmationModal delete={() => props.deleteFromCart(item.id)} />
                 <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart} updateCart={props.updateCart}/>
               </div>
             );
