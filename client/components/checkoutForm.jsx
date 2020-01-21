@@ -53,24 +53,36 @@ class CheckoutForm extends React.Component {
         billingAddress: { ...prevState.billingAddress, [name]: value }
       }));
     }
+    if (name === 'lastName' || name === 'firstName') {
+      let num = value.toString();
+      if (num.length >= 2 && num.length >= 33) {
+        target.value = num.substr(0, num.length - 1);
+      }
+    }
     if (name === 'creditCardNumber') {
       let num = value.toString();
+      const number = /^[0-9]+$/;
       if (num.length >= 19) {
         target.value = num.substr(0, 19);
       } else if (num.length === 4 || num.length === 9 || num.length === 14) {
         target.value = num + ' ';
       } else if (num[num.length - 1] === ' ') {
         target.value = num.substr(0, num.length - 1);
+      } else if (!num[num.length - 1].match(number)) {
+        target.value = num.substring(0, num.length - 1);
       }
     }
     if (name === 'expiration') {
       let num = value.toString();
+      const number = /^[0-9]+$/;
       if (num.length >= 7) {
         target.value = num.substr(0, 7);
       } else if (num.length === 2) {
         target.value = num + '/';
       } else if (num[num.length - 1] === '/') {
         target.value = num.substr(0, num.length - 1);
+      } else if (!num[num.length - 1].match(number)) {
+        target.value = num.substring(0, num.length - 1);
       }
     }
     if (name === 'CVV') {
@@ -82,12 +94,23 @@ class CheckoutForm extends React.Component {
         target.value = num.substring(0, num.length - 1);
       }
     }
-    if (name === 'lastName' || name === 'firstName') {
+
+    if (name === 'address' || name === 'address2') {
       let num = value.toString();
-      if (num.length >= 2) {
-        target.value = num.substr(0, 2);
-      } else if (num.length >= 32) {
-        target.value = num.substr(32, num.length - 1);
+      if (num.length >= 6 && num.length >= 42) {
+        target.value = num.substr(0, num.length - 1);
+      }
+    }
+
+    if (name === 'zip') {
+      let num = value.toString();
+      const number = /^[0-9]+$/;
+      if (num.length > 5) {
+        target.value = num.substr(0, 5);
+      } else if (num.length === 0) {
+        target.value = '';
+      } else if (!num[num.length - 1].match(number)) {
+        target.value = num.substring(0, num.length - 1);
       }
     }
   }
@@ -200,7 +223,7 @@ class CheckoutForm extends React.Component {
   }
   handleNumbers(target) {
     const number = /^[0-9]+$/;
-    const value = target.value;
+    const value = target.value.replace(' ', '');
     if (value.match(number)) {
       target.nextSibling.classList.remove('d-block');
       return true;
@@ -565,7 +588,7 @@ class CheckoutForm extends React.Component {
               </div>
               <div className="row">
                 <div className="col-md-3 mb-3">
-                  <label htmlFor="cc-expiration">Expiration (MM/YYYY)</label>
+                  <label htmlFor="cc-expiration">Expiration</label>
                   <input
                     type="text"
                     className="form-control"
@@ -574,7 +597,7 @@ class CheckoutForm extends React.Component {
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Invalid Number"
-                    placeholder=""
+                    placeholder="MM/YYYY"
                     required
                     onChange={this.handleInputChange}
                   />
