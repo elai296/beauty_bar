@@ -30,7 +30,7 @@ $ npm run dev
 
 ## Contributing
 
-Please feel free to fork from this repository, make pull requests and help improve the game by sending suggestions to elainep926@gmail.com
+Please feel free to fork from this repository, make pull requests and help improve the project by sending suggestions to elainep926@gmail.com
 
 ## Built With
 
