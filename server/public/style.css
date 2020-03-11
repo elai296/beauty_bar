@@ -377,7 +377,3 @@ a:visited {
 .itemName, .itemPrice{
   font-size: 2.5vw;
 }
-.img-fluid{
-  object-fit: contain;
-  object-position: center;
-}
