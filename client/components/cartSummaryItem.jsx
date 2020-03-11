@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 
 function onUpdate(input, item, btn, props) {

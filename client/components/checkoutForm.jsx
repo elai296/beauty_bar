@@ -72,19 +72,47 @@ class CheckoutForm extends React.Component {
         target.value = num.substring(0, num.length - 1);
       }
     }
-    if (name === 'expiration') {
-      let num = value.toString();
-      const number = /^[0-9]+$/;
-      if (num.length >= 7) {
-        target.value = num.substr(0, 7);
-      } else if (num.length === 2) {
-        target.value = num + '/';
-      } else if (num[num.length - 1] === '/') {
-        target.value = num.substr(0, num.length - 1);
-      } else if (!num[num.length - 1].match(number)) {
-        target.value = num.substring(0, num.length - 1);
-      }
-    }
+    // if (name === 'expiration') {
+    //   let num = value.toString();
+    //   const number = /^[0-9/0-9]+$/;
+    //   if (num.length >= 7) {
+    //     target.value = num.substr(0, 7);
+    //   } else if (num.length === 2) {
+    //     target.value = num + '/';
+    //   } else if (num[num.length - 1] === '/') {
+    //     target.value = num.substr(0, num.length - 1);
+    //   } else if (!num[num.length - 1].match(number)) {
+    //     target.value = num.substring(0, num.length - 1);
+    //   }
+    // }
+    // if (name === 'expirationYear') {
+    //   let num = parseInt(value);
+    //   let date = new Date();
+    //   const currentYear = date.getFullYear();
+    //   // const currentMonth = date.getMonth();
+    //   if (num < currentYear) {
+    //     // const expirationMonth = document.getElementsByName('expirationMonth').value;
+    //     console.log(expirationMonth);
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // }
+
+    // if (name === 'expirationMonth') {
+    //   let num = parseInt(value);
+    //   let date = new Date();
+    //   // const currentYear = date.getFullYear();
+    //   const currentMonth = date.getMonth();
+    //   if (num < currentMonth) {
+    //     // const expirationMonth = document.getElementsByName('expirationMonth').value;
+    //     console.log(expirationMonth);
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // }
+
     if (name === 'CVV') {
       let num = value.toString();
       const number = /^[0-9]+$/;
@@ -104,7 +132,7 @@ class CheckoutForm extends React.Component {
 
     if (name === 'zip') {
       let num = value.toString();
-      const number = /^[0-9]+$/;
+      const number = /^[0-9/]+$/;
       if (num.length > 5) {
         target.value = num.substr(0, 5);
       } else if (num.length === 0) {
@@ -187,10 +215,11 @@ class CheckoutForm extends React.Component {
     } else if (
       name === 'zip' ||
       name === 'creditCardNumber' ||
-      name === 'CVV' ||
-      name === 'expiration'
+      name === 'CVV'
     ) {
       return this.handleNumbers(target);
+    } else if (name === 'expirationYear') {
+      return this.handleExpiration(target);
     } else if (name === 'state' || name === 'country') {
       return this.handleDropDown(target);
     } else {
@@ -299,7 +328,22 @@ class CheckoutForm extends React.Component {
       return false;
     }
   }
-
+  handleExpiration(target) {
+    let num = parseInt(target.value);
+    let date = new Date();
+    const currentYear = date.getFullYear();
+    if (num === currentYear) {
+      const currentMonth = date.getMonth();
+      var expMonth = document.getElementsByName('expirationMonth')[0].value;
+      if (expMonth <= currentMonth) {
+        target.parentNode.nextSibling.classList.add('d-block');
+        return false;
+      } else {
+        target.parentNode.nextSibling.classList.remove('d-block');
+        return true;
+      }
+    }
+  }
   render(props) {
     return (
       <div className="container">
@@ -586,10 +630,10 @@ class CheckoutForm extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-3 mb-3">
+              <div className="row d-flex">
+                <div className="col-md-6 mb-3">
                   <label htmlFor="cc-expiration">Expiration</label>
-                  <input
+                  {/* <input
                     type="text"
                     className="form-control"
                     name="expiration"
@@ -600,7 +644,44 @@ class CheckoutForm extends React.Component {
                     placeholder="MM/YYYY"
                     required
                     onChange={this.handleInputChange}
-                  />
+                  /> */}
+                  <div className="col-md-12 d-flex p-0 justify-content-between">
+                    <select className="form-control  required valid col-md-6" name="expirationMonth" aria-required="true" aria-invalid="false">
+                      <option className="select-option" label="January" value="1">January</option>
+                      <option className="select-option" label="February" value="2">February</option>
+                      <option className="select-option" label="March" value="3">March</option>
+                      <option className="select-option" label="April" value="4">April</option>
+                      <option className="select-option" label="May" value="5">May</option>
+                      <option className="select-option" label="June" value="6">June</option>
+                      <option className="select-option" label="July" value="7">July</option>
+                      <option className="select-option" label="August" value="8">August</option>
+                      <option className="select-option" label="September" value="9">September</option>
+                      <option className="select-option" label="October" value="10">October</option>
+                      <option className="select-option" label="November" value="11">November</option>
+                      <option className="select-option" label="December" value="12">December</option>
+                    </select>
+                    <span className="m-2"> / </span>
+                    <select className="form-control  required valid col-md-4" name="expirationYear" aria-required="true" aria-invalid="false">
+                      <option className="select-option" label="2020" value="2020">2020</option>
+                      <option className="select-option" label="2021" value="2021">2021</option>
+                      <option className="select-option" label="2022" value="2022">2022</option>
+                      <option className="select-option" label="2023" value="2023">2023</option>
+                      <option className="select-option" label="2024" value="2024">2024</option>
+                      <option className="select-option" label="2025" value="2025">2025</option>
+                      <option className="select-option" label="2026" value="2026">2026</option>
+                      <option className="select-option" label="2027" value="2027">2027</option>
+                      <option className="select-option" label="2028" value="2028">2028</option>
+                      <option className="select-option" label="2029" value="2029">2029</option>
+                      <option className="select-option" label="2030" value="2030">2030</option>
+                      <option className="select-option" label="2031" value="2031">2031</option>
+                      <option className="select-option" label="2032" value="2032">2032</option>
+                      <option className="select-option" label="2033" value="2033">2033</option>
+                      <option className="select-option" label="2034" value="2034">2034</option>
+                      <option className="select-option" label="2035" value="2035">2035</option>
+                      <option className="select-option" label="2036" value="2036">2036</option>
+                      <option className="select-option" label="2037" value="2037">2037</option>
+                    </select>
+                  </div>
                   <div className="invalid-feedback">
                     Expiration date required
                   </div>
