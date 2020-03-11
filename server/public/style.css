@@ -371,16 +371,13 @@ a:visited {
   outline:1px solid black;
 } */
 
-@media screen and (orientation: landscape){
-
-}
-
-@media screen and (orientation: portrait){
-  
-}
 .itemBrand{
   font-size: 3vw;
 }
 .itemName, .itemPrice{
   font-size: 2.5vw;
+}
+.img-fluid{
+  object-fit: contain;
+  object-position: center;
 }
