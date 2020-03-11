@@ -61,16 +61,17 @@ class CheckoutForm extends React.Component {
     }
     if (name === 'creditCardNumber') {
       let num = value.toString();
-      const number = /^[0-9]+$/;
-      if (num.length >= 19) {
-        target.value = num.substr(0, 19);
-      } else if (num.length === 4 || num.length === 9 || num.length === 14) {
-        target.value = num + ' ';
-      } else if (num[num.length - 1] === ' ') {
-        target.value = num.substr(0, num.length - 1);
-      } else if (!num[num.length - 1].match(number)) {
-        target.value = num.substring(0, num.length - 1);
+      // const number = /^[0-9]+$/;
+      if (num.length >= 16) {
+        target.value = num.substr(0, 16);
       }
+      // else if (num.length === 4 || num.length === 9 || num.length === 14) {
+      //   target.value = num + ' ';
+      // } else if (num[num.length - 1] === ' ') {
+      //   target.value = num.substr(0, num.length - 1);
+      // } else if (!num[num.length - 1].match(number)) {
+      //   target.value = num.substring(0, num.length - 1);
+      // }
     }
     // if (name === 'expiration') {
     //   let num = value.toString();
@@ -197,7 +198,17 @@ class CheckoutForm extends React.Component {
       return this.handleName(target, validation);
       // return this.handleName(target, 2, 32, validation);
     } else if (name === 'nameOnCard') {
-      return this.handleName(target, 2, 64);
+      const validation = {
+        validate: /^[A-Za-z_\s]+$/,
+        min: 2,
+        max: 32,
+        message: {
+          short: 'Name is too short',
+          long: 'Name is too long',
+          invalid: 'Not a valid name'
+        }
+      };
+      return this.handleName(target, validation);
     } else if (name === 'address' || name === 'address2') {
       return this.handleBothNumbersAndLetter(target);
     } else if (name === 'email') {
@@ -212,12 +223,10 @@ class CheckoutForm extends React.Component {
         }
       };
       return this.handleName(target, validation);
-    } else if (
-      name === 'zip' ||
-      name === 'creditCardNumber' ||
-      name === 'CVV'
-    ) {
+    } else if (name === 'zip' || name === 'CVV') {
       return this.handleNumbers(target);
+    } else if (name === 'creditCardNumber') {
+      return this.handleCC(target);
     } else if (name === 'expirationYear') {
       return this.handleExpiration(target);
     } else if (name === 'state' || name === 'country') {
@@ -342,6 +351,20 @@ class CheckoutForm extends React.Component {
         target.parentNode.nextSibling.classList.remove('d-block');
         return true;
       }
+    } else {
+      target.parentNode.nextSibling.classList.remove('d-block');
+      return true;
+    }
+  }
+  handleCC(target) {
+    const myRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/;
+    const value = target.value;
+    if (value.match(myRegEx)) {
+      target.nextSibling.classList.remove('d-block');
+      return true;
+    } else {
+      target.nextSibling.classList.add('d-block');
+      return false;
     }
   }
   render(props) {
@@ -565,8 +588,8 @@ class CheckoutForm extends React.Component {
                   <div className="invalid-feedback">Zip code required.</div>
                 </div>
               </div>
-              <hr className="mb-4" />
-              <div className="custom-control custom-checkbox">
+              {/* <hr className="mb-4" /> */}
+              {/* <div className="custom-control custom-checkbox">
                 <input
                   type="checkbox"
                   className="custom-control-input"
@@ -587,7 +610,7 @@ class CheckoutForm extends React.Component {
                 <label className="custom-control-label" htmlFor="save-info">
                   Save this information for next time
                 </label>
-              </div>
+              </div> */}
               <hr className="mb-4" />
               <div className="row">
                 <div className="col-md-6 mb-3">
@@ -683,7 +706,7 @@ class CheckoutForm extends React.Component {
                     </select>
                   </div>
                   <div className="invalid-feedback">
-                    Expiration date required
+                    Credit Card expired
                   </div>
                 </div>
                 <div className="col-md-3 mb-3">

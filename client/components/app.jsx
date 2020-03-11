@@ -13,6 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // view: 'checkout',
       view: 'home page',
       cart: [],
       cartItems: 0,
@@ -28,6 +29,9 @@ export default class App extends React.Component {
   }
 
   setView(name, params) {
+    if (this.state.view === 'thankyouconfirmationpage') {
+      this.setState({ cart: [] }, this.getCartItem());
+    }
     this.setState({
       view: name,
       params: { params }
@@ -50,8 +54,8 @@ export default class App extends React.Component {
     fetch('/api/orders.php', {
       method: 'POST',
       body: order
-    }).then(response => response.json())
-      .then(() => this.setState({ cart: [] }, this.getCartItem()));
+    }).then(response => response.json());
+    // .then(() => this.setState({ cart: [] }, this.getCartItem()));
   }
 
   addToCart(product, quantity) {
