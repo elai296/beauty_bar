@@ -1,5 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cartSummaryItem';
+import DeleteConfirmationModal from './deleteComfirmationModal';
 
 function handleClick(props) {
   props.setView('catalog', {});
@@ -24,7 +25,7 @@ function returnCart(props) {
   }
   if (props.cart.length === 0) {
     return (
-      <div>
+      <div style={{ height: '50vh' }}>
         <h4 className="text-center">Your basket is currently empty.</h4>
         <a href="#"><div className="mt-3 text-center" onClick={e => handleClick(props)}>
           {'< Return to Shopping'}
@@ -35,7 +36,6 @@ function returnCart(props) {
     return (
       <div>
         <div className="row">
-          {/* <DeleteConfirmationModal delete={() => props.deleteFromCart(item.id)} /> */}
           <div className='d-none d-md-block col-12' >
 
             <div className="col-12 d-flex dotsBordersTB py-1 my-3">
@@ -51,7 +51,8 @@ function returnCart(props) {
           {!props.cart ? null : props.cart.map(item => {
             return (
               <div className="cartSummaryItem mb-3 dotsBordersBottom pb-3 col-12" key={item.id}>
-                <CartSummaryItem item={item} deleteFromCart={props.deleteFromCart} updateCart={props.updateCart}/>
+                <CartSummaryItem item={item} deleteFromCart={() => props.deleteFromCart(item.id)} updateCart={props.updateCart}/>
+                <DeleteConfirmationModal delete={() => props.deleteFromCart(item.id)} />
               </div>
             );
           })}
