@@ -60,10 +60,6 @@ body {
   color: #a1a09f;
 }
 
-.card {
-  border: none;
-}
-
 .image {
   max-width: 100%;
   top: 100px;
@@ -127,12 +123,15 @@ body {
   width: 20px;
   top: 10px;
 }
-
+.card-body{
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
 .card-body:hover:not(.propsPrice) {
   text-decoration: underline;
 }
 
-.card-body:hover{
+.card:hover{
   cursor: pointer;
 }
 #carouselParent img {
@@ -207,6 +206,8 @@ button {
   height: 150px;
   display: block;
   margin: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 .propsFeaturedImage img {
   height: 100%;
@@ -308,18 +309,40 @@ button {
     z-index: 2;
     position: absolute;
     width: 75%;
-    background-color: #e3f0f8;
+    background-color: white;
+    border: 1px solid #999999;
     top: 40%;
     left: 50%;
     transform: translate(-50%,0);
     text-align: center;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+.quickLook:hover{
+  background-color: #e3f0f8;
+  border: none;
+  
 }
-
+* {
+  box-sizing: border-box;
+}
+.card {
+  padding-top: 1px;
+  border: none;
+}
 
 .card:hover .quickLook {
   display: block;
 }
-
+.card:hover .card-body {
+  font-size: 105%;
+}
+.card:hover .propsFeaturedImage, .card:hover .propsImage{
+  /* box-shadow: inset 0px 0px 16px black; */
+  opacity: .3;
+}
+/* .propsImage */
 @media (min-width: 1000px){
 .headerHover:hover {
   border-bottom: 3px solid #bc2226;
