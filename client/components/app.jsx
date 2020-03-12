@@ -45,7 +45,7 @@ export default class App extends React.Component {
       )
       .then(cartProducts => {
         this.setState({ cart: cartProducts }, () => {
-          if (this.state.view === 'checkout' && this.cartItemCount(this.cart) === 0) {
+          if (this.state.view === 'checkout' && this.cartItemCount(this.state.cart) === 0) {
             this.setView('catalog');
           }
         });

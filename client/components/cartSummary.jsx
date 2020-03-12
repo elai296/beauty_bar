@@ -1,6 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cartSummaryItem';
-import DeleteConfirmationModal from './deleteComfirmationModal';
+import DeleteConfirmationModal from './deleteConfirmationModal';
 
 function handleClick(props) {
   props.setView('catalog', {});
