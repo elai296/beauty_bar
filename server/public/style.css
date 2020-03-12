@@ -335,14 +335,11 @@ button {
 .card:hover .quickLook {
   display: block;
 }
-.card:hover .card-body {
-  font-size: 105%;
-}
+
 .card:hover .propsFeaturedImage, .card:hover .propsImage{
-  /* box-shadow: inset 0px 0px 16px black; */
   opacity: .3;
 }
-/* .propsImage */
+
 @media (min-width: 1000px){
 .headerHover:hover {
   border-bottom: 3px solid #bc2226;
@@ -407,4 +404,10 @@ a:visited {
 body,html{
   height:100vh;
   width: 100vw;
+}
+
+@media only screen and (max-height: 1024px){
+  span{
+    font-size: .45em;
+  }
 }
