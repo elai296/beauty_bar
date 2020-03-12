@@ -377,7 +377,7 @@ class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col-md-4 order-md-2 mb-4 checkoutItems pt-4 dotsBorders">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-muted">ORDER SUMMARY</span>
+              <span className="text-muted smallscreen">ORDER SUMMARY</span>
               <span className="badge badge-secondary badge-pill">
                 Total: {this.cartItemCount(this.props.cart)} items
               </span>
