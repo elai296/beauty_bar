@@ -131,6 +131,10 @@ body {
 .card-body:hover:not(.propsPrice) {
   text-decoration: underline;
 }
+
+.card-body:hover{
+  cursor: pointer;
+}
 #carouselParent img {
   height: 100%;
   width: 90%;
