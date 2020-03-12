@@ -13,8 +13,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'checkout',
-      // view: 'home page',
+      view: 'home page',
       cart: [],
       cartItems: 0,
       deleteCart: false
