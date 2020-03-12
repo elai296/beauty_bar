@@ -13,7 +13,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // view: 'checkout',
       view: 'home page',
       cart: [],
       cartItems: 0,
@@ -45,8 +44,13 @@ export default class App extends React.Component {
         response.json()
       )
       .then(cartProducts => {
-        this.setState({ cart: cartProducts });
+        this.setState({ cart: cartProducts }, () => {
+          if (this.state.view === 'checkout' && this.cartItemCount(this.cart) === 0) {
+            this.setView('catalog');
+          }
+        });
         this.setState({ cartItems: this.sumCartItem(cartProducts) });
+
       });
   }
 
@@ -71,8 +75,7 @@ export default class App extends React.Component {
       method: 'DELETE',
       body: JSON.stringify(product)
     })
-      .then(() => this.getCartItem(),
-        this.setState({ deleteCart: true }));
+      .then(() => this.getCartItem());
   }
   updateCart(item, count) {
     fetch('/api/cart.php?id=' + item + '&qty=' + count, {
@@ -102,12 +105,14 @@ export default class App extends React.Component {
   }
 
   cartItemCount(cart) {
-    var sum = 0;
-    cart.map(item => {
-      return (
-        sum += parseInt(item.count)
-      );
-    });
+    let sum = 0;
+    if (cart !== undefined) {
+      cart.map(item => {
+        return (
+          sum += parseInt(item.count)
+        );
+      });
+    }
     return sum;
   }
 

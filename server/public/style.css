@@ -403,8 +403,15 @@ body,html{
   width: 100vw;
 }
 
-@media only screen and (max-height: 1024px){
-  span.smallscreen{
-    font-size: .45em;
-  }
+.orderSummary .summaryTitle{
+  font-size: .75em;
+}
+.orderSummary .badge{
+  font-size: .5em;
+}
+.productDetail h5{
+  font-size:1.1rem;
+}
+.productDetail h6{
+  font-size:.9rem;
 }
