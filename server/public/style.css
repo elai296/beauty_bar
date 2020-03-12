@@ -391,9 +391,6 @@ a:visited {
 .plus-btn, .minus-btn{
   font-size: 10px;
 }
-/* #cartSummary *{
-  outline:1px solid black;
-} */
 
 .itemBrand{
   font-size: 3vw;
@@ -407,7 +404,7 @@ body,html{
 }
 
 @media only screen and (max-height: 1024px){
-  span{
+  span.smallscreen{
     font-size: .45em;
   }
 }
