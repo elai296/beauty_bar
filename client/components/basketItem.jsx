@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteConfirmationModal from './deleteComfirmationModal';
+import DeleteConfirmationModal from './deleteConfirmationModal';
 
 export default function basketItem(props) {
   const cart = props.cart;
