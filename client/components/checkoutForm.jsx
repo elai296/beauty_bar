@@ -375,9 +375,9 @@ class CheckoutForm extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-md-4 order-md-2 mb-4 checkoutItems pt-4 dotsBorders">
-            <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-muted smallscreen">ORDER SUMMARY</span>
+          <div className="col-lg-4 order-lg-2 mb-4 checkoutItems pt-4 dotsBorders">
+            <h4 className="d-flex justify-content-between mb-3 orderSummary">
+              <span className="text-muted summaryTitle">ORDER SUMMARY</span>
               <span className="badge badge-secondary badge-pill">
                 Total: {this.cartItemCount(this.props.cart)} items
               </span>
@@ -406,7 +406,7 @@ class CheckoutForm extends React.Component {
               </li>
             </ul>
           </div>
-          <div className="col-md-8 order-md-1">
+          <div className="col-lg-8 order-lg-1">
             <h4 className="mb-3">Billing address</h4>
             <form className="needs-validation" noValidate>
               <div className="row">
