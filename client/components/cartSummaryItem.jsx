@@ -12,7 +12,9 @@ function onUpdate(input, item, btn, props) {
     input.value = count;
     props.updateCart(item, count);
   } else {
-    props.deleteFromCart(item);
+    // eslint-disable-next-line no-undef
+    $('#deleteConfirm').modal('show');
+    // props.deleteFromCart(item);
   }
 }
 
