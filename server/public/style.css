@@ -398,10 +398,10 @@ a:visited {
 .itemName, .itemPrice{
   font-size: 2.5vw;
 }
-body,html{
+/* body,html{
   height:100vh;
   width: 100vw;
-}
+} */
 
 .orderSummary .summaryTitle{
   font-size: .75em;

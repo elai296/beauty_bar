@@ -15,7 +15,7 @@ function Header(props) {
       <div className="freeShipping text-center mt-4" onClick={e => handleClickHome(props)}></div>
       <nav className="navbar navbar-expand-lg navbar-light stripedNavBar  pl-5 text-dark">
         <a href="#"className="beautyBarLogo my-auto navbar-brand" onClick={e => handleClickHome(props)}><h3 className='text-center beautyBar brand font-italic'>beauty bar</h3></a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
