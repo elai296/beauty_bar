@@ -59,7 +59,6 @@ export default class App extends React.Component {
       method: 'POST',
       body: order
     }).then(response => response.json());
-    // .then(() => this.setState({ cart: [] }, this.getCartItem()));
   }
 
   addToCart(product, quantity) {

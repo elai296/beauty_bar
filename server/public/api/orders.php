@@ -16,7 +16,6 @@ if ($method != 'POST') {
   http_response_code(201);
   session_destroy();
   print(json_encode($order));
-  // print('session destroy');
 }
 
 ?>

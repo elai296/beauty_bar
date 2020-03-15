@@ -14,7 +14,6 @@ function onUpdate(input, item, btn, props) {
   } else {
     // eslint-disable-next-line no-undef
     $('#deleteConfirm').modal('show');
-    // props.deleteFromCart(item);
   }
 }
 
