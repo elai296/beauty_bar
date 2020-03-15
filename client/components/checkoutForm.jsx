@@ -61,58 +61,10 @@ class CheckoutForm extends React.Component {
     }
     if (name === 'creditCardNumber') {
       let num = value.toString();
-      // const number = /^[0-9]+$/;
       if (num.length >= 16) {
         target.value = num.substr(0, 16);
       }
-      // else if (num.length === 4 || num.length === 9 || num.length === 14) {
-      //   target.value = num + ' ';
-      // } else if (num[num.length - 1] === ' ') {
-      //   target.value = num.substr(0, num.length - 1);
-      // } else if (!num[num.length - 1].match(number)) {
-      //   target.value = num.substring(0, num.length - 1);
-      // }
     }
-    // if (name === 'expiration') {
-    //   let num = value.toString();
-    //   const number = /^[0-9/0-9]+$/;
-    //   if (num.length >= 7) {
-    //     target.value = num.substr(0, 7);
-    //   } else if (num.length === 2) {
-    //     target.value = num + '/';
-    //   } else if (num[num.length - 1] === '/') {
-    //     target.value = num.substr(0, num.length - 1);
-    //   } else if (!num[num.length - 1].match(number)) {
-    //     target.value = num.substring(0, num.length - 1);
-    //   }
-    // }
-    // if (name === 'expirationYear') {
-    //   let num = parseInt(value);
-    //   let date = new Date();
-    //   const currentYear = date.getFullYear();
-    //   // const currentMonth = date.getMonth();
-    //   if (num < currentYear) {
-    //     // const expirationMonth = document.getElementsByName('expirationMonth').value;
-    //     console.log(expirationMonth);
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // }
-
-    // if (name === 'expirationMonth') {
-    //   let num = parseInt(value);
-    //   let date = new Date();
-    //   // const currentYear = date.getFullYear();
-    //   const currentMonth = date.getMonth();
-    //   if (num < currentMonth) {
-    //     // const expirationMonth = document.getElementsByName('expirationMonth').value;
-    //     console.log(expirationMonth);
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // }
 
     if (name === 'CVV') {
       let num = value.toString();
@@ -147,6 +99,7 @@ class CheckoutForm extends React.Component {
     event.preventDefault();
     this.validateForm();
   }
+
   validateForm() {
     let elements = document.getElementsByTagName('input');
     let validated = true;
@@ -159,6 +112,7 @@ class CheckoutForm extends React.Component {
       } else {
         validated = validate;
       }
+
     }
     elements = document.getElementsByTagName('select');
     for (let i = 0; i < elements.length; i++) {

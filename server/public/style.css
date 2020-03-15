@@ -17,11 +17,8 @@ body {
 }
 .stripedNavBar {
   background-color: #e3f0f8;
-  /* background-image: url(./image/navBarStripes.gif); */
-  /* background-repeat: repeat; */
   background-position-y: center;
   color: #303e48;
-  /* background-color: #42413d; */
   font-family: "AvenirNextLTPro-Regular", sans-serif;
   padding: 0;
   border-top: solid #bc2226;
@@ -398,10 +395,6 @@ a:visited {
 .itemName, .itemPrice{
   font-size: 2.5vw;
 }
-/* body,html{
-  height:100vh;
-  width: 100vw;
-} */
 
 .orderSummary .summaryTitle{
   font-size: .75em;

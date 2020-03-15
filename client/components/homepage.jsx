@@ -1,5 +1,4 @@
 import React from 'react';
-// import Carousel2 from './carousel copy';
 import FeaturedProducts from './featuredProducts';
 import DemoModal from './demoModal';
 import MyAd from './ad1';

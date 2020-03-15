@@ -53,9 +53,6 @@ export default function ThankYouConfirmationPage(props) {
                       <h6 className="my-0 text-dark">{item.brand + ' - ' + item.name}</h6>
                       <div className="d-flex justify-content-center">
                         <img src={item.image}className="basketImage" />
-                        {/* <span className="badge badge-secondary badge-pill">
-                          {props.cartItemCount(props.cart)} item
-                        </span> */}
                       </div>
                     </div>
                     <div className="col-4">
